@@ -1,8 +1,12 @@
-# amis admin 模板
+## austin项目前端
 
-基于 [amis](https://github.com/baidu/amis) 渲染器，快速搭建自己的管理系统。
+
+后端：[austin](https://gitee.com/zhongfucheng/austin)
+
 
 ## 快速开始
+
+基于 [amis](https://github.com/baidu/amis) 渲染器，快速搭建自己的管理系统。
 
 其实这个项目直接双击 `index.html` 都能看大部分效果，不过为了更完整体验，请运行下面的命令：
 
