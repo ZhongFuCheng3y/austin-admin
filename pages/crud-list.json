@@ -1,6 +1,6 @@
 {
   "type": "page",
-  "title": "列表.",
+  "title": "列表管理",
   "remark": null,
   "name": "page-demo",
   "toolbar": [
@@ -8,6 +8,7 @@
       "type": "button",
       "actionType": "link",
       "link": "/crud/new",
+      "icon": "fa fa-plus",
       "label": "新增",
       "primary": true
     }
@@ -16,7 +17,7 @@
     {
       "type": "crud",
       "name": "sample",
-      "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample",
+      "api": "http://localhost:8080/messageTemplate/list",
       "filter": {
         "title": "",
         "mode": "inline",
@@ -70,33 +71,43 @@
       ],
       "columns": [
         {
-          "name": "engine",
-          "label": "Rendering engine",
-          "sortable": true
-        },
-        {
           "name": "id",
           "label": "ID",
           "width": 20,
           "sortable": true
         },
         {
-          "name": "browser",
-          "label": "Browser",
-          "sortable": true
+          "name": "name",
+          "label": "模板消息名"
         },
         {
-          "name": "platform",
-          "label": "Platform(s)",
-          "sortable": true
+          "name": "sendChannel",
+          "label": "发送渠道",
+          "type": "mapping",
+          "map": {
+            "10": "IM站内信",
+            "20": "PUSH通知栏",
+            "30": "短信",
+            "40": "邮箱",
+            "50": "服务号",
+            "60": "小程序"
+          }
         },
         {
-          "name": "version",
-          "label": "Engine version"
+          "name": "creator",
+          "label": "创建者"
         },
         {
-          "name": "grade",
-          "label": "CSS grade"
+          "name": "idType",
+          "label": "接收者ID类型",
+          "type": "mapping",
+          "map": {
+            "10": "用户ID",
+            "20": "设备号",
+            "30": "手机号",
+            "40": "openId",
+            "50": "邮箱地址"
+          }
         },
         {
           "type": "operation",
@@ -106,6 +117,26 @@
             {
               "type": "button-group",
               "buttons": [
+                {
+                  "type": "button",
+                  "label": "测试",
+                  "level": "primary",
+                  "actionType": "dialog",
+                  "dialog": {
+                    "title": "测试一条消息",
+                    "body": {
+                      "type": "form",
+                      "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/mock2/form/saveForm",
+                      "body": [
+                        {
+                          "type": "input-text",
+                          "name": "groupName",
+                          "label": "接收者"
+                        }
+                      ]
+                    }
+                  }
+                },
                 {
                   "type": "button",
                   "label": "查看",
