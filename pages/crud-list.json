@@ -23,9 +23,10 @@
         "mode": "inline",
         "wrapWithPanel": false,
         "submitText": "",
-        "controls": [
+        "className": "m-b-sm",
+        "body": [
           {
-            "type": "text",
+            "type": "input-text",
             "name": "keywords",
             "placeholder": "通过关键字搜索",
             "addOn": {
@@ -33,39 +34,18 @@
               "type": "submit",
               "className": "btn-success"
             },
-            "clearable": true
+            "clearable": true,
+            "size": "lg"
           }
-        ],
-        "className": "m-b-sm"
+        ]
       },
       "bulkActions": [
-        {
-          "label": "批量修改",
-          "type": "button",
-          "actionType": "dialog",
-          "level": "primary",
-          "dialog": {
-            "title": "批量编辑",
-            "name": "sample-bulk-edit",
-            "body": {
-              "type": "form",
-              "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/bulkUpdate2",
-              "controls": [
-                {
-                  "type": "text",
-                  "name": "engine",
-                  "label": "Engine"
-                }
-              ]
-            }
-          }
-        },
         {
           "label": "批量删除",
           "type": "button",
           "level": "danger",
           "actionType": "ajax",
-          "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$ids",
+          "api": "delete:http://localhost:8080/messageTemplate/delete/$ids",
           "confirmText": "确定要批量删除?"
         }
       ],
@@ -91,6 +71,25 @@
             "40": "邮箱",
             "50": "服务号",
             "60": "小程序"
+          }
+        },
+        {
+          "name": "templateType",
+          "label": "模板类型",
+          "type": "mapping",
+          "map": {
+            "10": "定时任务发送",
+            "20": "实时调用接口"
+          }
+        },
+        {
+          "name": "msgType",
+          "label": "消息类型",
+          "type": "mapping",
+          "map": {
+            "10": "通知类",
+            "20": "营销类",
+            "30": "验证码"
           }
         },
         {
@@ -153,11 +152,19 @@
                 },
                 {
                   "type": "button",
+                  "label": "复制",
+                  "level": "warning",
+                  "actionType": "ajax",
+                  "confirmText": "您确认要复制?",
+                  "api": "post:http://localhost:8080/messageTemplate/copy/$id"
+                },
+                {
+                  "type": "button",
                   "label": "删除",
                   "level": "danger",
                   "actionType": "ajax",
                   "confirmText": "您确认要删除?",
-                  "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id"
+                  "api": "delete:http://localhost:8080/messageTemplate/delete/$id"
                 }
               ]
             }

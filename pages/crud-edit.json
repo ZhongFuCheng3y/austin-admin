@@ -13,7 +13,7 @@
   "body": [
     {
       "type": "form",
-      "initApi": "http://localhost:8080/messageTemplate/queryById/${params.id}",
+      "initApi": "http://localhost:8080/messageTemplate/query/${params.id}",
       "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id",
       "redirect": "/crud/list",
       "controls": [
