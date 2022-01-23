@@ -203,6 +203,25 @@
               "placeholder": "可用占位符{$var} 最好是短链"
             },
             {
+              "type": "select",
+              "label": "邮件账号",
+              "name": "sendAccount",
+              "options": [
+                {
+                  "label": "QQ邮箱",
+                  "value": "10"
+                },
+                {
+                  "label": "163邮箱",
+                  "value": "20"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 40",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
               "type": "input-text",
               "label": "邮件标题",
               "name": "title",

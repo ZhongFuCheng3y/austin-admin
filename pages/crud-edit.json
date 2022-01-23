@@ -49,7 +49,7 @@
           "proposer": "${proposer}",
           "sendChannel": "${sendChannel}",
           "sendAccount": "${sendAccount}",
-          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\"}"
+          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\"}"
         }
       },
       "body": [
