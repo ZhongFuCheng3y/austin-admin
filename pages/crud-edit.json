@@ -1,7 +1,6 @@
 {
   "type": "page",
-  "title": "修改 ${params.id}",
-  "remark": null,
+  "title": "修改当前模板",
   "toolbar": [
     {
       "type": "button",
@@ -13,91 +12,229 @@
   "body": [
     {
       "type": "form",
-      "initApi": "http://localhost:8080/messageTemplate/query/${params.id}",
-      "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id",
-      "redirect": "/crud/list",
-      "controls": [
+      "mode": "horizontal",
+      "title": "",
+      "actions": [
         {
-          "type": "text",
-          "name": "id",
-          "label": "ID",
-          "width": 20,
-          "required": true
-        },
-        {
-          "type": "text",
-          "name": "name",
-          "label": "name"
-        },
-        {
-          "type": "radios",
-          "name": "idType",
-          "label": "接收者ID类型",
-          "options": [
-            {
-              "label": "用户ID",
-              "value": "10"
-            },
-            {
-              "label": "设备号",
-              "value": "20"
-            },
-            {
-              "label": "手机号",
-              "value": "30"
-            },
-            {
-              "label": "openID",
-              "value": "40"
-            },
-            {
-              "label": "邮箱地址",
-              "value": "50"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "name": "engine",
-          "label": "Engine",
-          "required": true
-        },
-        {
-          "type": "divider"
-        },
-        {
-          "type": "text",
-          "name": "browser",
-          "label": "Browser",
-          "required": true
-        },
-        {
-          "type": "divider"
-        },
-        {
-          "type": "text",
-          "name": "platform",
-          "label": "Platform(s)",
-          "required": true
-        },
-        {
-          "type": "divider"
-        },
-        {
-          "type": "text",
-          "name": "version",
-          "label": "Engine version"
-        },
-        {
-          "type": "divider"
-        },
-        {
-          "type": "select",
-          "name": "grade",
-          "label": "CSS grade",
-          "options": ["A", "B", "C", "D", "X"]
+          "label": "保存",
+          "type": "submit",
+          "level": "success"
         }
-      ]
+      ],
+      "affixFooter": true,
+      "initApi": "http://localhost:8080/messageTemplate/query/${params.id}",
+      "api": {
+        "url": "http://localhost:8080/messageTemplate/save",
+        "method": "post",
+
+        "data": {
+          "id": "${id}",
+          "name": "${name}",
+          "flowId": "${flowId}",
+          "msgStatus": "${msgStatus}",
+          "auditStatus": "${auditStatus}",
+          "creator": "${creator}",
+          "updator": "${updator}",
+          "team": "${team}",
+          "auditor": "${auditor}",
+          "deduplicationTime": "${deduplicationTime}",
+          "isNightShield": "${isNightShield}",
+          "created": "${created}",
+          "updated": "${updated}",
+          "isDeleted": "${isDeleted}",
+          "idType": "${idType}",
+          "msgType": "${msgType}",
+          "templateType": "${templateType}",
+          "expectPushTime": "${expectPushTime}",
+          "proposer": "${proposer}",
+          "sendChannel": "${sendChannel}",
+          "sendAccount": "${sendAccount}",
+          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\"}"
+        }
+      },
+      "body": [
+        {
+          "type": "fieldSet",
+          "title": "基本配置",
+          "body": [
+            {
+              "type": "input-text",
+              "label": "模板名称",
+              "name": "name",
+              "size": "md",
+              "required": true
+            },
+            {
+              "type": "radios",
+              "label": "接收者Id类型",
+              "name": "idType",
+              "options": [
+                {
+                  "label": "用户ID",
+                  "value": "10"
+                },
+                {
+                  "label": "设备号",
+                  "value": "20"
+                },
+                {
+                  "label": "手机号",
+                  "value": "30"
+                },
+                {
+                  "label": "openID",
+                  "value": "40"
+                },
+                {
+                  "label": "邮箱地址",
+                  "value": "50"
+                }
+              ],
+              "required": true
+            },
+            {
+              "type": "radios",
+              "label": "消息类型",
+              "name": "msgType",
+              "options": [
+                {
+                  "label": "通知类",
+                  "value": "10"
+                },
+                {
+                  "label": "营销类",
+                  "value": "20"
+                },
+                {
+                  "label": "验证码",
+                  "value": "30"
+                }
+              ],
+              "required": true
+            },
+            {
+              "type": "radios",
+              "label": "消息模板类型",
+              "name": "templateType",
+              "options": [
+                {
+                  "label": "定时",
+                  "value": "10"
+                },
+                {
+                  "label": "实时",
+                  "value": "20"
+                }
+              ],
+              "required": true
+            },
+            {
+              "type": "input-text",
+              "label": "cron表达式",
+              "name": "expectPushTime",
+              "size": "md",
+              "visibleOn": "this.templateType == 10",
+              "clearValueOnHidden": false,
+              "visible": "",
+              "required": true
+            },
+            {
+              "type": "input-text",
+              "label": "模板业务方",
+              "name": "proposer",
+              "size": "md",
+              "mode": "",
+              "description": ""
+            }
+          ],
+          "className": "Collapse--lg",
+          "bodyClassName": "r-3x w-full text-lg r font-bold"
+        },
+        {
+          "type": "fieldSet",
+          "title": "渠道信息",
+          "body": [
+            {
+              "type": "radios",
+              "label": "发送渠道",
+              "name": "sendChannel",
+              "options": [
+                {
+                  "label": "IM站内信",
+                  "value": "10"
+                },
+                {
+                  "label": "PUSH通知栏",
+                  "value": "20"
+                },
+                {
+                  "label": "短信",
+                  "value": "30"
+                },
+                {
+                  "label": "邮箱",
+                  "value": "40"
+                },
+                {
+                  "label": "服务号",
+                  "value": "50"
+                },
+                {
+                  "label": "小程序",
+                  "value": "60"
+                }
+              ],
+              "required": true
+            },
+            {
+              "type": "select",
+              "label": "短信账号",
+              "name": "sendAccount",
+              "options": [
+                {
+                  "label": "腾讯云通知",
+                  "value": "10"
+                },
+                {
+                  "label": "腾讯云营销",
+                  "value": "20"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 30",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "type": "input-text",
+              "label": "短信内容",
+              "name": "content",
+              "required": true,
+              "visibleOn": "this.sendChannel == 30",
+              "mode": "",
+              "size": "lg",
+              "clearValueOnHidden": false
+            },
+            {
+              "type": "input-text",
+              "label": "短信链接",
+              "name": "url",
+              "visibleOn": "this.sendChannel == 30",
+              "size": "lg",
+              "clearValueOnHidden": false
+            }
+          ],
+          "className": "Collapse--lg",
+          "bodyClassName": "r-3x w-full text-lg r font-bold"
+        }
+      ],
+      "panelClassName": "Panel--default",
+      "bodyClassName": "text-lg"
     }
-  ]
+  ],
+  "messages": {
+  },
+  "style": {
+  },
+  "bodyClassName": "p-lg p-t-lg p-r-lg p-b-lg p-l-lg m-none m-l-lg m-b-lg m-r-lg m-t-lg m-lg b-5x b-dark r-3x text-dark bg-white w-full font-bold text-lg"
 }
