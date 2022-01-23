@@ -1,14 +1,6 @@
 {
   "type": "page",
   "title": "新建消息模板配置",
-  "toolbar": [
-    {
-      "type": "button",
-      "actionType": "link",
-      "link": "/crud/list",
-      "label": "返回列表"
-    }
-  ],
   "body": [
     {
       "type": "form",
@@ -27,7 +19,7 @@
           "proposer": "${proposer}",
           "sendChannel": "${sendChannel}",
           "sendAccount": "${sendAccount}",
-          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\"}"
+          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\"}"
         }
       },
       "actions": [
@@ -198,7 +190,8 @@
               "visibleOn": "this.sendChannel == 30",
               "mode": "",
               "size": "lg",
-              "clearValueOnHidden": false
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$var}"
             },
             {
               "type": "input-text",
@@ -206,7 +199,27 @@
               "name": "url",
               "visibleOn": "this.sendChannel == 30",
               "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$var} 最好是短链"
+            },
+            {
+              "type": "input-text",
+              "label": "邮件标题",
+              "name": "title",
+              "required": true,
+              "visibleOn": "this.sendChannel == 40",
+              "size": "lg",
               "clearValueOnHidden": false
+            },
+            {
+              "type": "input-text",
+              "label": "邮件内容",
+              "name": "content",
+              "required": true,
+              "visibleOn": "this.sendChannel == 40",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$var}，可输入HTML"
             }
           ],
           "className": "Collapse--lg",
@@ -217,9 +230,15 @@
       "bodyClassName": "text-lg"
     }
   ],
-  "messages": {
-  },
-  "style": {
-  },
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/crud/list",
+      "label": "返回列表"
+    }
+  ],
+  "messages": {},
+  "style": {},
   "bodyClassName": "p-lg p-t-lg p-r-lg p-b-lg p-l-lg m-none m-l-lg m-b-lg m-r-lg m-t-lg m-lg b-5x b-dark r-3x text-dark bg-white w-full font-bold text-lg"
 }

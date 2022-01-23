@@ -17,9 +17,6 @@
       "actions": [],
       "affixFooter": true,
       "initApi": "http://localhost:8080/messageTemplate/query/${params.id}",
-      "data": {
-        "content": "${msgContent}"
-      },
       "body": [
         {
           "type": "fieldSet",
@@ -190,6 +187,25 @@
               "visibleOn": "this.sendChannel == 30",
               "size": "lg",
               "clearValueOnHidden": false
+            },
+            {
+              "type": "input-text",
+              "label": "邮件标题",
+              "name": "title",
+              "required": true,
+              "visibleOn": "this.sendChannel == 40",
+              "size": "lg",
+              "clearValueOnHidden": false
+            },
+            {
+              "type": "input-text",
+              "label": "邮件内容",
+              "name": "content",
+              "required": true,
+              "visibleOn": "this.sendChannel == 40",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$var}，可输入HTML"
             }
           ],
           "className": "Collapse--lg",
