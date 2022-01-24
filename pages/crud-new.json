@@ -7,6 +7,7 @@
       "mode": "horizontal",
       "title": "",
       "affixFooter": true,
+      "redirect": "/crud/list",
       "api": {
         "url": "http://localhost:8080/messageTemplate/save",
         "method": "post",
@@ -191,7 +192,7 @@
               "mode": "",
               "size": "lg",
               "clearValueOnHidden": false,
-              "placeholder": "可用占位符{$var}"
+              "placeholder": "可用占位符{$content}"
             },
             {
               "type": "input-text",
@@ -200,7 +201,7 @@
               "visibleOn": "this.sendChannel == 30",
               "size": "lg",
               "clearValueOnHidden": false,
-              "placeholder": "可用占位符{$var} 最好是短链"
+              "placeholder": "可用占位符{$url}，最好输入短链接"
             },
             {
               "type": "select",
@@ -228,7 +229,8 @@
               "required": true,
               "visibleOn": "this.sendChannel == 40",
               "size": "lg",
-              "clearValueOnHidden": false
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$title}"
             },
             {
               "type": "input-text",
@@ -238,7 +240,7 @@
               "visibleOn": "this.sendChannel == 40",
               "size": "lg",
               "clearValueOnHidden": false,
-              "placeholder": "可用占位符{$var}，可输入HTML"
+              "placeholder": "可用占位符{$content}，可输入HTML"
             }
           ],
           "className": "Collapse--lg",

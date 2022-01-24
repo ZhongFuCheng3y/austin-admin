@@ -120,17 +120,62 @@
                   "type": "button",
                   "label": "测试",
                   "level": "primary",
+                  "initApi": "post:http://localhost:8080/messageTemplate/query/$id",
                   "actionType": "dialog",
                   "dialog": {
                     "title": "测试一条消息",
                     "body": {
                       "type": "form",
-                      "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/mock2/form/saveForm",
+                      "api":{
+                        "url": "http://localhost:8080/messageTemplate/test",
+                        "method": "post",
+                        "data": {
+                          "id": "${id}",
+                          "name": "${name}",
+                          "receiver": "${receiver}",
+                          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\"}"
+                        }
+                      },
                       "body": [
                         {
                           "type": "input-text",
-                          "name": "groupName",
-                          "label": "接收者"
+                          "name": "receiver",
+                          "label": "接收者",
+                          "description": "<font color=\"#008252\">存在占位符{$var}请替换占位符文案测试下发！</font>"
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "短信内容",
+                          "name": "content",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 30",
+                          "mode": "",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "短信链接",
+                          "name": "url",
+                          "visibleOn": "this.sendChannel == 30",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "邮件标题",
+                          "name": "title",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 40",
+                          "size": "lg",
+                          "clearValueOnHidden": true
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "邮件内容",
+                          "name": "content",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 40",
+                          "size": "lg",
+                          "clearValueOnHidden": true
                         }
                       ]
                     }
