@@ -6,7 +6,7 @@
       {
         "label": "Home",
         "url": "/",
-        "redirect": "/index/1"
+        "redirect": "/crud/list"
       },
       {
         "label": "消息模板管理",
@@ -47,7 +47,7 @@
         "children": [
           {
             "label": "全链路追踪",
-            "link": "http://baidu.gitee.io/amis"
+            "link": "http://gitee.com/zhongfucheng/austin"
           }
         ]
       }
