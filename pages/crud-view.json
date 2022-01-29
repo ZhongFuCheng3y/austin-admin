@@ -30,6 +30,14 @@
               "required": true
             },
             {
+              "type": "input-text",
+              "label": "模板业务方",
+              "name": "proposer",
+              "size": "md",
+              "mode": "",
+              "description": ""
+            },
+            {
               "type": "radios",
               "label": "接收者Id类型",
               "name": "idType",
@@ -101,15 +109,20 @@
               "visibleOn": "this.templateType == 10",
               "clearValueOnHidden": false,
               "visible": "",
-              "required": true
+              "required": true,
+              "description": "1、<font color=\"#008252\">生成cron表达式页面：<a href=\"https://www.matools.com/cron\" target=\"_blank\">https://www.matools.com/cron</a></font></br>\n2、<font color=\"#008252\">需要【立即发送】时填0</font>",
+              "placeholder": "需要【立即发送】时填0"
             },
             {
               "type": "input-text",
-              "label": "模板业务方",
-              "name": "proposer",
+              "label": "人群Id",
+              "name": "cronCrowdId",
               "size": "md",
-              "mode": "",
-              "description": ""
+              "visibleOn": "this.templateType == 10",
+              "clearValueOnHidden": false,
+              "visible": "",
+              "required": true,
+              "placeholder": "目前只填写需要接收消息者的ID"
             }
           ],
           "className": "Collapse--lg",
@@ -178,7 +191,8 @@
               "visibleOn": "this.sendChannel == 30",
               "mode": "",
               "size": "lg",
-              "clearValueOnHidden": false
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$content}"
             },
             {
               "type": "input-text",
@@ -186,7 +200,27 @@
               "name": "url",
               "visibleOn": "this.sendChannel == 30",
               "size": "lg",
-              "clearValueOnHidden": false
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$url}"
+            },
+            {
+              "type": "select",
+              "label": "邮件账号",
+              "name": "sendAccount",
+              "options": [
+                {
+                  "label": "QQ邮箱",
+                  "value": "10"
+                },
+                {
+                  "label": "163邮箱",
+                  "value": "20"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 40",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
             },
             {
               "type": "input-text",
@@ -195,7 +229,8 @@
               "required": true,
               "visibleOn": "this.sendChannel == 40",
               "size": "lg",
-              "clearValueOnHidden": false
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$title}"
             },
             {
               "type": "input-text",
@@ -205,7 +240,7 @@
               "visibleOn": "this.sendChannel == 40",
               "size": "lg",
               "clearValueOnHidden": false,
-              "placeholder": "可用占位符{$var}，可输入HTML"
+              "placeholder": "可用占位符{$content}，可输入HTML"
             }
           ],
           "className": "Collapse--lg",

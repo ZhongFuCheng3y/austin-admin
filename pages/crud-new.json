@@ -20,6 +20,7 @@
           "proposer": "${proposer}",
           "sendChannel": "${sendChannel}",
           "sendAccount": "${sendAccount}",
+          "cronCrowdId": "${cronCrowdId}",
           "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\"}"
         }
       },
@@ -41,6 +42,14 @@
               "name": "name",
               "size": "md",
               "required": true
+            },
+            {
+              "type": "input-text",
+              "label": "模板业务方",
+              "name": "proposer",
+              "size": "md",
+              "mode": "",
+              "description": ""
             },
             {
               "type": "radios",
@@ -114,15 +123,20 @@
               "visibleOn": "this.templateType == 10",
               "clearValueOnHidden": false,
               "visible": "",
-              "required": true
+              "required": true,
+              "description": "1、<font color=\"#008252\">生成cron表达式页面：<a href=\"https://www.matools.com/cron\" target=\"_blank\">https://www.matools.com/cron</a></font></br>\n2、<font color=\"#008252\">需要【立即发送】时填0</font>",
+              "placeholder": "需要【立即发送】时填0"
             },
             {
               "type": "input-text",
-              "label": "模板业务方",
-              "name": "proposer",
+              "label": "人群Id",
+              "name": "cronCrowdId",
               "size": "md",
-              "mode": "",
-              "description": ""
+              "visibleOn": "this.templateType == 10",
+              "clearValueOnHidden": false,
+              "visible": "",
+              "required": true,
+              "placeholder": "目前只填写需要接收消息者的ID"
             }
           ],
           "className": "Collapse--lg",

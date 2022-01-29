@@ -1,23 +1,12 @@
 {
   "type": "page",
   "title": "列表管理",
-  "remark": null,
-  "name": "page-demo",
-  "toolbar": [
-    {
-      "type": "button",
-      "actionType": "link",
-      "link": "/crud/new",
-      "icon": "fa fa-plus",
-      "label": "新增",
-      "primary": true
-    }
-  ],
   "body": [
     {
       "type": "crud",
-      "name": "sample",
       "api": "http://localhost:8080/messageTemplate/list",
+      "bodyClassName": "panel-default",
+      "name": "sample",
       "filter": {
         "title": "",
         "mode": "inline",
@@ -126,7 +115,7 @@
                     "title": "测试一条消息",
                     "body": {
                       "type": "form",
-                      "api":{
+                      "api": {
                         "url": "http://localhost:8080/messageTemplate/test",
                         "method": "post",
                         "data": {
@@ -197,6 +186,24 @@
                 },
                 {
                   "type": "button",
+                  "label": "启动",
+                  "level": "success",
+                  "actionType": "ajax",
+                  "confirmText": "您确认要启动吗?",
+                  "api": "post:http://localhost:8080/messageTemplate/start/$id",
+                  "visibleOn": "this.templateType==10 && this.msgStatus!=30"
+                },
+                {
+                  "type": "button",
+                  "label": "停止",
+                  "level": "success",
+                  "actionType": "ajax",
+                  "confirmText": "您确认要暂停吗?",
+                  "api": "post:http://localhost:8080/messageTemplate/stop/$id",
+                  "visibleOn": "this.templateType==10 && this.msgStatus==30"
+                },
+                {
+                  "type": "button",
                   "label": "复制",
                   "level": "warning",
                   "actionType": "ajax",
@@ -225,8 +232,19 @@
       "headerClassName": "crud-table-header",
       "footerClassName": "crud-table-footer",
       "toolbarClassName": "crud-table-toolbar",
-      "combineNum": 0,
-      "bodyClassName": "panel-default"
+      "combineNum": 0
     }
-  ]
+  ],
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/crud/new",
+      "label": "新增",
+      "icon": "fa fa-plus",
+      "primary": true
+    }
+  ],
+  "remark": null,
+  "name": "page-demo"
 }
