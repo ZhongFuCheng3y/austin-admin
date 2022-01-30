@@ -3,8 +3,6 @@
   "title": "修改当前模板",
   "body": [
     {
-      "type": "form",
-      "mode": "horizontal",
       "title": "",
       "actions": [
         {
@@ -13,38 +11,6 @@
           "level": "success"
         }
       ],
-      "affixFooter": true,
-      "initApi": "http://localhost:8080/messageTemplate/query/${params.id}",
-      "redirect": "/crud/list",
-      "api": {
-        "url": "http://localhost:8080/messageTemplate/save",
-        "method": "post",
-        "data": {
-          "id": "${id}",
-          "name": "${name}",
-          "flowId": "${flowId}",
-          "msgStatus": "${msgStatus}",
-          "auditStatus": "${auditStatus}",
-          "creator": "${creator}",
-          "updator": "${updator}",
-          "team": "${team}",
-          "auditor": "${auditor}",
-          "deduplicationTime": "${deduplicationTime}",
-          "isNightShield": "${isNightShield}",
-          "created": "${created}",
-          "updated": "${updated}",
-          "isDeleted": "${isDeleted}",
-          "idType": "${idType}",
-          "msgType": "${msgType}",
-          "templateType": "${templateType}",
-          "expectPushTime": "${expectPushTime}",
-          "proposer": "${proposer}",
-          "sendChannel": "${sendChannel}",
-          "sendAccount": "${sendAccount}",
-          "cronCrowdId": "${cronCrowdId}",
-          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\"}"
-        }
-      },
       "body": [
         {
           "type": "fieldSet",
@@ -138,32 +104,33 @@
               "clearValueOnHidden": false,
               "visible": "",
               "required": true,
-              "description": "1、<font color=\"#008252\">生成cron表达式页面：<a href=\"https://www.matools.com/cron\" target=\"_blank\">https://www.matools.com/cron</a></font></br>\n2、<font color=\"#008252\">需要【立即发送】时填0</font>",
+              "description": "1、<font color=\"#008252\">生成cron表达式页面：<a href=\"https://www.matools.com/cron\" target=\"_blank\">https://www.matools.com/cron</a></font>  2、<font color=\"#008252\">需要【立即发送】时填0</font>",
               "placeholder": "需要【立即发送】时填0"
             },
             {
               "type": "input-text",
-              "label": "人群Id",
-              "name": "cronCrowdId",
-              "size": "md",
+              "name": "cronCrowdPath",
               "visibleOn": "this.templateType == 10",
+              "required": true,
+              "label": "人群文件路径",
+              "size": "md",
               "clearValueOnHidden": false,
               "visible": "",
-              "required": true,
-              "placeholder": "目前只填写需要接收消息者的ID"
+              "readOnly": true,
+              "placeholder": "上传成功后自动填写(无须编辑)"
             }
           ],
-          "className": "Collapse--lg",
-          "bodyClassName": "r-3x w-full text-lg r font-bold"
+          "bodyClassName": "r-3x w-full text-lg r font-bold",
+          "className": ""
         },
         {
           "type": "fieldSet",
           "title": "渠道信息",
           "body": [
             {
-              "type": "radios",
-              "label": "发送渠道",
               "name": "sendChannel",
+              "label": "发送渠道",
+              "type": "radios",
               "options": [
                 {
                   "label": "IM站内信",
@@ -212,9 +179,9 @@
               "size": "lg"
             },
             {
+              "name": "content",
               "type": "input-text",
               "label": "短信内容",
-              "name": "content",
               "required": true,
               "visibleOn": "this.sendChannel == 30",
               "mode": "",
@@ -271,12 +238,46 @@
               "placeholder": "可用占位符{$content}，可输入HTML"
             }
           ],
-          "className": "Collapse--lg",
+          "className": "",
           "bodyClassName": "r-3x w-full text-lg r font-bold"
         }
       ],
+      "type": "form",
+      "mode": "horizontal",
+      "affixFooter": true,
       "panelClassName": "Panel--default",
-      "bodyClassName": "text-lg"
+      "bodyClassName": "text-lg",
+      "redirect": "/crud/list",
+      "api": {
+        "url": "http://localhost:8080/messageTemplate/save",
+        "method": "post",
+        "data": {
+          "name": "${name}",
+          "idType": "${idType}",
+          "msgType": "${msgType}",
+          "templateType": "${templateType}",
+          "expectPushTime": "${expectPushTime}",
+          "proposer": "${proposer}",
+          "sendChannel": "${sendChannel}",
+          "sendAccount": "${sendAccount}",
+          "cronCrowdPath": "${cronCrowdPath}",
+          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\"}",
+          "id": "${id}",
+          "flowId": "${flowId}",
+          "msgStatus": "${msgStatus}",
+          "auditStatus": "${auditStatus}",
+          "creator": "${creator}",
+          "updator": "${updator}",
+          "team": "${team}",
+          "auditor": "${auditor}",
+          "deduplicationTime": "${deduplicationTime}",
+          "isNightShield": "${isNightShield}",
+          "created": "${created}",
+          "updated": "${updated}",
+          "isDeleted": "${isDeleted}"
+        }
+      },
+      "initApi": "http://localhost:8080/messageTemplate/query/${params.id}"
     }
   ],
   "toolbar": [
