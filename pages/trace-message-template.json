@@ -1,0 +1,59 @@
+{
+  "type": "page",
+  "body": [
+    {
+      "type": "form",
+      "title": "过滤条件",
+      "target": "chart1",
+      "submitOnInit": true,
+      "className": "m-b",
+      "wrapWithPanel": false,
+      "mode": "inline",
+      "reload": "chart1",
+      "body": [
+        {
+          "type": "input-text",
+          "label": "输入模板Id：",
+          "name": "name",
+          "addOn": {
+            "type": "submit",
+            "label": "查询",
+            "level": "primary"
+          },
+          "size": "lg",
+          "mode": "",
+          "description": "",
+          "placeholder": "查询非当天模板数据，输入businessId"
+        }
+      ],
+      "actions": []
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "grid",
+      "className": "m-t-lg",
+      "columns": [
+        {
+          "body": [
+            {
+              "type": "chart",
+              "name": "chart1",
+              "initFetch": false,
+              "replaceChartOption": true,
+              "clearPersistDataAfterSubmit": true,
+              "api": {
+                "url": "http://localhost:8080/trace/messageTemplate",
+                "method": "post",
+                "data": {
+                  "businessId": "${name}"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

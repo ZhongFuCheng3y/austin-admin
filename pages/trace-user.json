@@ -1,0 +1,51 @@
+{
+  "type": "page",
+  "body": [
+    {
+      "title": "查询条件",
+      "type": "form",
+      "target": "my_crud",
+      "body": [
+        {
+          "type": "input-text",
+          "name": "keywords",
+          "label": "用户ID:"
+        }
+      ],
+      "submitText": "搜索"
+    },
+    {
+      "type": "crud",
+      "name": "my_crud",
+      "api": {
+        "url": "http://localhost:8080/trace/user",
+        "method": "post",
+        "data": {
+          "receiver": "${keywords}"
+        }
+      },
+      "columns": [
+        {
+          "name": "businessId",
+          "label": "业务ID"
+        },
+        {
+          "name": "title",
+          "label": "模板名称"
+        },
+        {
+          "name": "sendType",
+          "label": "发送类型"
+        },
+        {
+          "name": "creator",
+          "label": "模板创建者"
+        },
+        {
+          "name": "detail",
+          "label": "发送细节"
+        }
+      ]
+    }
+  ]
+}

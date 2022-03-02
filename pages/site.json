@@ -9,7 +9,7 @@
         "redirect": "/crud/list"
       },
       {
-        "label": "消息模板管理",
+        "label": "模板管理",
         "children": [
           {
             "label": "消息模板管理",
@@ -34,7 +34,6 @@
                 "schemaApi": "get:/pages/crud-view.json"
               },
               {
-
                 "url": "/crud/:id/edit",
                 "schemaApi": "get:/pages/crud-edit.json"
               }
@@ -47,9 +46,24 @@
         "children": [
           {
             "label": "全链路追踪",
-            "link": "http://gitee.com/zhongfucheng/austin"
+            "url": "/crud",
+            "rewrite": "/crud/list",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "url": "trace/user",
+                "label": "用户全链路追踪",
+                "schemaApi": "get:/pages/trace-user.json"
+              },
+              {
+                "url": "trace/messageTemplate",
+                "label": "消息模板全链路追踪",
+                "schemaApi": "get:/pages/trace-message-template.json"
+              }
+            ]
           }
         ]
+
       }
     ]
   }
