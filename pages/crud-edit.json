@@ -55,6 +55,10 @@
                 {
                   "label": "邮箱地址",
                   "value": "50"
+                },
+                {
+                  "label": "企业微信userId",
+                  "value": "60"
                 }
               ],
               "required": true
@@ -155,6 +159,10 @@
                 {
                   "label": "小程序",
                   "value": "60"
+                },
+                {
+                  "label": "企业微信",
+                  "value": "70"
                 }
               ],
               "required": true
@@ -236,6 +244,85 @@
               "size": "lg",
               "clearValueOnHidden": false,
               "placeholder": "可用占位符{$content}，可输入HTML"
+            }, {
+              "type": "select",
+              "label": "企业微信应用",
+              "name": "sendAccount",
+              "options": [
+                {
+                  "label": "austin",
+                  "value": "10"
+                },
+                {
+                  "label": "athena",
+                  "value": "20"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 70",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "name": "wechatType",
+              "label": "发送类型",
+              "type": "radios",
+              "options": [
+                {
+                  "label": "文本",
+                  "value": "10"
+                },
+                {
+                  "label": "语音",
+                  "value": "20"
+                },
+                {
+                  "label": "视频",
+                  "value": "30"
+                },
+                {
+                  "label": "图文",
+                  "value": "40"
+                },
+                {
+                  "label": "文本卡片",
+                  "value": "50"
+                },
+                {
+                  "label": "文件",
+                  "value": "60"
+                },
+                {
+                  "label": "小程序通知",
+                  "value": "70"
+                },
+                {
+                  "label": "markdown类型",
+                  "value": "80"
+                },
+                {
+                  "label": "模板卡片",
+                  "value": "90"
+                },
+                {
+                  "label": "图片",
+                  "value": "100"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 70",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "type": "input-text",
+              "label": "企业微信内容",
+              "name": "content",
+              "required": true,
+              "visibleOn": "this.sendChannel == 70 && this.wechatType == 10",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$content}"
             }
           ],
           "className": "",
@@ -261,7 +348,7 @@
           "sendChannel": "${sendChannel}",
           "sendAccount": "${sendAccount}",
           "cronCrowdPath": "${cronCrowdPath}",
-          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\"}",
+          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\",\"wechatType\":\"${wechatType}\"}",
           "id": "${id}",
           "flowId": "${flowId}",
           "msgStatus": "${msgStatus}",
