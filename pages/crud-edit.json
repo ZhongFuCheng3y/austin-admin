@@ -59,6 +59,10 @@
                 {
                   "label": "企业微信userId",
                   "value": "60"
+                },
+                {
+                  "label": "钉钉userId",
+                  "value": "70"
                 }
               ],
               "required": true
@@ -85,22 +89,6 @@
             },
             {
               "type": "radios",
-              "label": "消息模板类型",
-              "name": "templateType",
-              "options": [
-                {
-                  "label": "定时",
-                  "value": "10"
-                },
-                {
-                  "label": "实时",
-                  "value": "20"
-                }
-              ],
-              "required": true
-            },
-            {
-              "type": "radios",
               "label": "屏蔽类型",
               "name": "shieldType",
               "options": [
@@ -119,6 +107,23 @@
               ],
               "required": true
             },
+            {
+              "type": "radios",
+              "label": "消息模板类型",
+              "name": "templateType",
+              "options": [
+                {
+                  "label": "定时",
+                  "value": "10"
+                },
+                {
+                  "label": "实时",
+                  "value": "20"
+                }
+              ],
+              "required": true
+            },
+
             {
               "type": "input-text",
               "label": "cron表达式",
@@ -183,6 +188,10 @@
                 {
                   "label": "企业微信",
                   "value": "70"
+                },
+                {
+                  "label": "钉钉群机器人",
+                  "value": "80"
                 }
               ],
               "required": true
@@ -284,7 +293,26 @@
               "size": "lg"
             },
             {
-              "name": "wechatType",
+              "type": "select",
+              "label": "钉钉群机器人",
+              "name": "sendAccount",
+              "options": [
+                {
+                  "label": "austin",
+                  "value": "10"
+                },
+                {
+                  "label": "athena",
+                  "value": "20"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 80",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "name": "sendType",
               "label": "发送类型",
               "type": "radios",
               "options": [
@@ -329,17 +357,17 @@
                   "value": "100"
                 }
               ],
-              "visibleOn": "this.sendChannel == 70",
+              "visibleOn": "this.sendChannel == 70 ||this.sendChannel == 80 ",
               "clearValueOnHidden": false,
               "required": true,
               "size": "lg"
             },
             {
               "type": "input-text",
-              "label": "企业微信内容",
+              "label": "钉钉发送内容",
               "name": "content",
               "required": true,
-              "visibleOn": "this.sendChannel == 70 && this.wechatType == 10",
+              "visibleOn": "this.sendChannel == 80 && this.sendType == 10",
               "size": "lg",
               "clearValueOnHidden": false,
               "placeholder": "可用占位符{$content}"
@@ -369,7 +397,7 @@
           "sendAccount": "${sendAccount}",
           "cronCrowdPath": "${cronCrowdPath}",
           "shieldType": "${shieldType}",
-          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\",\"wechatType\":\"${wechatType}\"}",
+          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\",\"sendType\":\"${sendType}\"}",
           "id": "${id}",
           "flowId": "${flowId}",
           "msgStatus": "${msgStatus}",
