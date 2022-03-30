@@ -192,6 +192,10 @@
                 {
                   "label": "钉钉群机器人",
                   "value": "80"
+                },
+                {
+                  "label": "钉钉工作消息",
+                  "value": "90"
                 }
               ],
               "required": true
@@ -312,6 +316,25 @@
               "size": "lg"
             },
             {
+              "type": "select",
+              "label": "钉钉应用",
+              "name": "sendAccount",
+              "options": [
+                {
+                  "label": "austin",
+                  "value": "10"
+                },
+                {
+                  "label": "athena",
+                  "value": "20"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 90",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
               "name": "sendType",
               "label": "发送类型",
               "type": "radios",
@@ -357,17 +380,28 @@
                   "value": "100"
                 }
               ],
-              "visibleOn": "this.sendChannel == 70 ||this.sendChannel == 80 ",
+              "visibleOn": "this.sendChannel == 70 ||this.sendChannel == 80 || this.sendChannel == 90 ",
               "clearValueOnHidden": false,
               "required": true,
               "size": "lg"
             },
             {
               "type": "input-text",
-              "label": "钉钉发送内容",
+              "label": "群机器人内容",
               "name": "content",
               "required": true,
               "visibleOn": "this.sendChannel == 80 && this.sendType == 10",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$content}"
+            }
+          ,
+            {
+              "type": "input-text",
+              "label": "钉钉工作消息",
+              "name": "content",
+              "required": true,
+              "visibleOn": "this.sendChannel == 90 && this.sendType == 10",
               "size": "lg",
               "clearValueOnHidden": false,
               "placeholder": "可用占位符{$content}"
