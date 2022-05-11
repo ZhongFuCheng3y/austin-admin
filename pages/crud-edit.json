@@ -63,6 +63,10 @@
                 {
                   "label": "钉钉userId",
                   "value": "70"
+                },
+                {
+                  "label": "推送通知栏cid",
+                  "value": "80"
                 }
               ],
               "required": true
@@ -235,6 +239,57 @@
               "label": "短信链接",
               "name": "url",
               "visibleOn": "this.sendChannel == 30",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$url}"
+            },
+            {
+              "type": "select",
+              "label": "推送账号",
+              "name": "sendAccount",
+              "options": [
+                {
+                  "label": "个推",
+                  "value": "10"
+                },
+                {
+                  "label": "信鸽",
+                  "value": "20"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 20",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "type": "input-text",
+              "label": "推送标题",
+              "name": "title",
+              "visibleOn": "this.sendChannel == 20",
+              "size": "lg",
+              "required": true,
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$title}"
+            },
+            {
+              "name": "content",
+              "type": "input-text",
+              "label": "推送内容",
+              "required": true,
+              "visibleOn": "this.sendChannel == 20",
+              "mode": "",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$content}"
+            },
+
+            {
+              "type": "input-text",
+              "label": "推送链接",
+              "name": "url",
+              "required": true,
+              "visibleOn": "this.sendChannel == 20",
               "size": "lg",
               "clearValueOnHidden": false,
               "placeholder": "可用占位符{$url}"

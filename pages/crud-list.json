@@ -99,7 +99,8 @@
             "40": "openId",
             "50": "邮箱地址",
             "60": "企业微信userId",
-            "70": "钉钉userId"
+            "70": "钉钉userId",
+            "80": "推送通知栏cid"
           }
         },
         {
@@ -168,6 +169,61 @@
                           "name": "content",
                           "required": true,
                           "visibleOn": "this.sendChannel == 40",
+                          "size": "lg",
+                          "clearValueOnHidden": true
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "推送标题",
+                          "name": "title",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 20",
+                          "size": "lg",
+                          "clearValueOnHidden": true
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "推送内容",
+                          "name": "content",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 20",
+                          "size": "lg",
+                          "clearValueOnHidden": true
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "推送链接",
+                          "name": "url",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 20",
+                          "size": "lg",
+                          "clearValueOnHidden": true
+                        }
+                      ,
+                        {
+                          "type": "input-text",
+                          "label": "企业微信内容",
+                          "name": "content",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 70",
+                          "size": "lg",
+                          "clearValueOnHidden": true
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "钉钉机器人内容",
+                          "name": "content",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 80",
+                          "size": "lg",
+                          "clearValueOnHidden": true
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "钉钉工作消息内容",
+                          "name": "content",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 90",
                           "size": "lg",
                           "clearValueOnHidden": true
                         }

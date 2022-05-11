@@ -63,6 +63,10 @@
                 {
                   "label": "钉钉userId",
                   "value": "70"
+                },
+                {
+                  "label": "推送通知栏cid",
+                  "value": "80"
                 }
               ],
               "required": true
@@ -254,6 +258,53 @@
               "size": "lg",
               "clearValueOnHidden": false,
               "placeholder": "可用占位符{$url}，最好输入短链接"
+            },
+            {
+              "type": "select",
+              "label": "发送账号",
+              "name": "sendAccount",
+              "options": [
+                {
+                  "label": "个推",
+                  "value": "10"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 20",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "name": "title",
+              "type": "input-text",
+              "label": "发送标题",
+              "required": true,
+              "visibleOn": "this.sendChannel == 20",
+              "mode": "",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$title}"
+            },
+            {
+              "name": "content",
+              "type": "input-text",
+              "label": "发送内容",
+              "required": true,
+              "visibleOn": "this.sendChannel == 20",
+              "mode": "",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$content}"
+            },
+            {
+              "type": "input-text",
+              "label": "发送链接",
+              "name": "url",
+              "required": true,
+              "visibleOn": "this.sendChannel == 20",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$url}"
             },
             {
               "type": "select",
