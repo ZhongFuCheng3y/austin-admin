@@ -1,0 +1,66 @@
+{
+  "type": "page",
+  "body": [
+    {
+      "title": "查询条件",
+      "type": "form",
+      "target": "my_crud",
+      "body": [
+        {
+          "type": "input-text",
+          "name": "phone",
+          "label": "手机号:"
+        },
+        {
+          "type": "input-datetime",
+          "label": "日期时间",
+          "name": "dateTime",
+          "id": "u:19a52e7a9c6c"
+        }
+      ],
+      "submitText": "搜索"
+    },
+    {
+      "type": "crud",
+      "name": "my_crud",
+      "api": {
+        "url": "http://localhost:8080/trace/sms",
+        "method": "post",
+        "data": {
+          "receiver": "${phone}",
+          "dateTime": "${dateTime}"
+        }
+      },
+      "columns": [
+        {
+          "name": "businessId",
+          "label": "业务ID"
+        },
+        {
+          "name": "content",
+          "label": "发送内容"
+        },
+        {
+          "name": "sendTime",
+          "label": "发送时间"
+        },
+        {
+          "name": "sendType",
+          "label": "发送状态"
+        },
+        {
+          "name": "receiveTime",
+          "label": "回执时间"
+        },
+        {
+          "name": "receiveType",
+          "label": "回执状态"
+        },
+        {
+          "name": "receiveContent",
+          "label": "回执报告"
+        }
+      ]
+    }
+  ]
+}

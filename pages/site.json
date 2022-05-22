@@ -59,6 +59,11 @@
                 "url": "trace/messageTemplate",
                 "label": "消息模板全链路追踪",
                 "schemaApi": "get:/pages/trace-message-template.json"
+              },
+              {
+                "url": "trace/sms",
+                "label": "短信下发查询",
+                "schemaApi": "get:/pages/trace-sms.json"
               }
             ]
           }
