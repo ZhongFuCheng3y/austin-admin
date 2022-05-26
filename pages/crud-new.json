@@ -221,19 +221,13 @@
               "required": true
             },
             {
-              "type": "select",
+              "type": "input-text",
               "label": "短信账号",
               "name": "sendAccount",
-              "options": [
-                {
-                  "label": "腾讯云通知",
-                  "value": "10"
-                },
-                {
-                  "label": "腾讯云营销",
-                  "value": "20"
-                }
-              ],
+              "disabled": true,
+              "value": "0",
+              "placeholder": "自动会根据消息类型选择发送账号",
+              "description": "自动会根据消息类型选择发送账号",
               "visibleOn": "this.sendChannel == 30",
               "clearValueOnHidden": false,
               "required": true,
