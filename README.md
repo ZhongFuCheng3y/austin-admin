@@ -1,7 +1,8 @@
 ## austin项目前端
 
-austin后端：[austin](https://gitee.com/zhongfucheng/austin)
+austin后端Gitee：[austin](https://gitee.com/zhongfucheng/austin)
 
+austin后端GitHub：[austin](https://gitee.com/zhongfucheng/austin)
 
 ## 快速开始
 
@@ -18,3 +19,5 @@ npm start
 ## 部署上线
 
 这个例子中的 amis 等依赖使用外部 cdn，为了稳定请在自己部署的时候将文件下载到本地。
+
+

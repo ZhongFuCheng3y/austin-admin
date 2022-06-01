@@ -124,11 +124,14 @@
                       "api": {
                         "url": "http://localhost:8080/messageTemplate/test",
                         "method": "post",
+                        "requestAdaptor": "let jsonObj = {};\n\nlet content = JSON.parse(api.data.msgContent).content\nlet url = JSON.parse(api.data.msgContent).url\nlet title = JSON.parse(api.data.msgContent).title\nlet sendType = JSON.parse(api.data.msgContent).sendType\nlet picUrl = JSON.parse(api.data.msgContent).picUrl\n\n\n// 钉钉机器人\nif (api.data.sendChannel == '80') {\n    // 图文类型(FeedCard)\n    if (sendType == '40') {\n        jsonObj.feedCards = JSON.stringify(api.data.feedCards)\n        api.data.msgContent = JSON.stringify(jsonObj)\n    }\n}\n\n\nreturn api;",
                         "data": {
                           "id": "${id}",
                           "name": "${name}",
                           "receiver": "${receiver}",
-                          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\"}"
+                          "sendChannel": "${sendChannel}",
+                          "feedCards": "${feedCards}",
+                          "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\",\"sendType\":\"${sendType}\",\"picUrl\":\"${picUrl}\"}"
                         }
                       },
                       "body": [
@@ -198,8 +201,103 @@
                           "visibleOn": "this.sendChannel == 20",
                           "size": "lg",
                           "clearValueOnHidden": true
-                        }
-                      ,
+                        },
+                        {
+                          "name": "sendChannel",
+                          "label": "发送渠道",
+                          "type": "radios",
+                          "options": [
+                            {
+                              "label": "IM站内信",
+                              "value": "10"
+                            },
+                            {
+                              "label": "PUSH通知栏",
+                              "value": "20"
+                            },
+                            {
+                              "label": "短信",
+                              "value": "30"
+                            },
+                            {
+                              "label": "邮箱",
+                              "value": "40"
+                            },
+                            {
+                              "label": "服务号",
+                              "value": "50"
+                            },
+                            {
+                              "label": "小程序",
+                              "value": "60"
+                            },
+                            {
+                              "label": "企业微信",
+                              "value": "70"
+                            },
+                            {
+                              "label": "钉钉群机器人",
+                              "value": "80"
+                            },
+                            {
+                              "label": "钉钉应用消息",
+                              "value": "90"
+                            }
+                          ],
+                          "visibleOn": "this.sendChannel == 999999 ",
+                          "required": true
+                        },
+                        {
+                          "name": "sendType",
+                          "label": "发送类型",
+                          "type": "radios",
+                          "options": [
+                            {
+                              "label": "文本",
+                              "value": "10"
+                            },
+                            {
+                              "label": "语音",
+                              "value": "20"
+                            },
+                            {
+                              "label": "视频",
+                              "value": "30"
+                            },
+                            {
+                              "label": "图文",
+                              "value": "40"
+                            },
+                            {
+                              "label": "文本卡片",
+                              "value": "50"
+                            },
+                            {
+                              "label": "文件",
+                              "value": "60"
+                            },
+                            {
+                              "label": "小程序通知",
+                              "value": "70"
+                            },
+                            {
+                              "label": "markdown类型",
+                              "value": "80"
+                            },
+                            {
+                              "label": "模板卡片",
+                              "value": "90"
+                            },
+                            {
+                              "label": "图片",
+                              "value": "100"
+                            }
+                          ],
+                          "visibleOn": "this.sendChannel == 999999 ",
+                          "clearValueOnHidden": false,
+                          "required": true,
+                          "size": "lg"
+                        },
                         {
                           "type": "input-text",
                           "label": "企业微信内容",
@@ -211,12 +309,78 @@
                         },
                         {
                           "type": "input-text",
-                          "label": "钉钉机器人内容",
+                          "label": "钉钉标题",
+                          "name": "title",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 80 && (this.sendType == 80 || this.sendType == 110 || this.sendType == 120 )",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "钉钉发送内容",
                           "name": "content",
                           "required": true,
-                          "visibleOn": "this.sendChannel == 80",
+                          "visibleOn": "this.sendChannel == 80 && (this.sendType == 10 || this.sendType == 80|| this.sendType == 110 || this.sendType == 120)",
                           "size": "lg",
-                          "clearValueOnHidden": true
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "钉钉发送链接",
+                          "name": "url",
+                          "required": true,
+                          "visibleOn": "this.sendChannel == 80 && ( this.sendType == 110)",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "钉钉图片链接",
+                          "name": "picUrl",
+                          "visibleOn": "this.sendChannel == 80 && ( this.sendType == 110)",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-table",
+                          "name": "feedCards",
+                          "addable": true,
+                          "editable": true,
+                          "visibleOn": "this.sendChannel == 80 && ( this.sendType == 40)",
+                          "columns": [
+                            {
+                              "name": "title",
+                              "label": "标题"
+                            },
+                            {
+                              "name": "messageURL",
+                              "label": "跳转链接"
+                            },
+                            {
+                              "name": "picURL",
+                              "label": "图片链接"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "input-table",
+                          "name": "btns",
+                          "addable": true,
+                          "editable": true,
+                          "visibleOn": "this.sendChannel == 80 && ( this.sendType == 120)",
+                          "columns": [
+                            {
+                              "name": "title",
+                              "label": "标题",
+                              "placeholder": "可用占位符{$title}"
+                            },
+                            {
+                              "name": "actionURL",
+                              "label": "跳转链接",
+                              "placeholder": "可用占位符{$actionURL}"
+                            }
+                          ]
                         },
                         {
                           "type": "input-text",

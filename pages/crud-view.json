@@ -420,9 +420,44 @@
                 {
                   "label": "图片",
                   "value": "100"
+                },
+                {
+                  "label": "链接消息",
+                  "value": "110"
                 }
               ],
-              "visibleOn": "this.sendChannel == 70 ||this.sendChannel == 80 ||this.sendChannel == 90 ",
+              "visibleOn": "this.sendChannel == 70  || this.sendChannel==90 ",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "name": "sendType",
+              "label": "发送类型",
+              "type": "radios",
+              "options": [
+                {
+                  "label": "文本(text)",
+                  "value": "10"
+                },
+                {
+                  "label": "图文(FeedCard)",
+                  "value": "40"
+                },
+                {
+                  "label": "markdown类型(markdown)",
+                  "value": "80"
+                },
+                {
+                  "label": "链接消息(links)",
+                  "value": "110"
+                },
+                {
+                  "label": "卡片消息(actionCard)",
+                  "value": "120"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 80",
               "clearValueOnHidden": false,
               "required": true,
               "size": "lg"
@@ -439,13 +474,98 @@
             },
             {
               "type": "input-text",
-              "label": "群机器人内容",
+              "label": "钉钉标题",
+              "name": "title",
+              "required": true,
+              "visibleOn": "this.sendChannel == 80 && (this.sendType == 80 || this.sendType == 110 || this.sendType == 120 )",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$title}"
+            },
+            {
+              "type": "input-text",
+              "label": "钉钉发送内容",
               "name": "content",
               "required": true,
-              "visibleOn": "this.sendChannel == 80 && this.sendType == 10",
+              "visibleOn": "this.sendChannel == 80 && (this.sendType == 10 || this.sendType == 80|| this.sendType == 110 || this.sendType == 120)",
               "size": "lg",
               "clearValueOnHidden": false,
               "placeholder": "可用占位符{$content}"
+            },
+            {
+              "type": "radios",
+              "label": "按钮布局",
+              "name": "btnOrientation",
+              "visibleOn": "this.sendChannel == 80 && (this.sendType == 120)",
+              "options": [
+                {
+                  "label": "按钮竖直排列",
+                  "value": "0"
+                },
+                {
+                  "label": "按钮横向排列",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "type": "input-table",
+              "name": "btns",
+              "addable": true,
+              "editable": true,
+              "visibleOn": "this.sendChannel == 80 && ( this.sendType == 120)",
+              "columns": [
+                {
+                  "name": "title",
+                  "label": "标题",
+                  "placeholder": "可用占位符{$title}"
+                },
+                {
+                  "name": "actionURL",
+                  "label": "跳转链接",
+                  "placeholder": "可用占位符{$actionURL}"
+                }
+              ]
+            },
+            {
+              "type": "input-text",
+              "label": "钉钉发送链接",
+              "name": "url",
+              "required": true,
+              "visibleOn": "this.sendChannel == 80 && ( this.sendType == 110)",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$url}"
+            },
+            {
+              "type": "input-text",
+              "label": "钉钉图片链接",
+              "name": "picUrl",
+              "visibleOn": "this.sendChannel == 80 && ( this.sendType == 110)",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$picUrl}"
+            },
+            {
+              "type": "input-table",
+              "name": "feedCards",
+              "addable": true,
+              "editable": true,
+              "visibleOn": "this.sendChannel == 80 && ( this.sendType == 40)",
+              "columns": [
+                {
+                  "name": "title",
+                  "label": "标题"
+                },
+                {
+                  "name": "messageURL",
+                  "label": "跳转链接"
+                },
+                {
+                  "name": "picURL",
+                  "label": "图片链接"
+                }
+              ]
             },
             {
               "type": "input-text",
