@@ -79,6 +79,61 @@ if (api.data.sendChannel == '90') {
         jsonObj.content = content
         jsonObj.sendType = sendType
     }
+    // 语音类型
+    if (sendType == '20') {
+        jsonObj.sendType = sendType
+        jsonObj.duration = api.data.duration
+        jsonObj.media_id = api.data.media_id
+    }
+    // 文件类型 || 图片类型
+    if (sendType == '60' || sendType == '100') {
+        jsonObj.sendType = sendType
+        jsonObj.media_id = api.data.media_id
+    }
+    // 链接类型
+    if (sendType == '110') {
+        jsonObj.content = content
+        jsonObj.sendType = sendType
+        jsonObj.title = title
+        jsonObj.media_id = api.data.media_id
+        jsonObj.url = url
+    }
+    // markdown类型(markdown)
+    if (sendType == '80') {
+        jsonObj.content = content
+        jsonObj.sendType = sendType
+        jsonObj.title = title
+    }
+    // 卡片跳转(actionCard)
+    if (sendType == '120') {
+        jsonObj.title = title
+        jsonObj.content = content
+        jsonObj.btnOrientation = api.data.btnOrientation
+        jsonObj.btns = JSON.stringify(api.data.btns)
+        jsonObj.sendType = sendType
+    }
+    
+    // OA(actionCard)
+    if (sendType == '130') {
+        
+        // 头部
+        var head = {}
+        head.bgcolor = api.data.dingDingOaHeadBgColor
+        head.text = api.data.dingDingOaHeadTitle
+        jsonObj.dingDingOaHead = head
+        
+        // body
+        var body = {}
+        body.title = api.data.dingDingOaTitle
+        body.content = api.data.dingDingOaContent
+        body.image = api.data.media_id
+        body.author = api.data.dingDingOaAuthor
+        jsonObj.dingDingOaBody = body
+        
+        // 通用
+        jsonObj.sendType = sendType
+        jsonObj.url = url
+    }
 }
 
 api.data.msgContent = JSON.stringify(jsonObj)

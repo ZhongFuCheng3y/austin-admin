@@ -384,12 +384,121 @@
                         },
                         {
                           "type": "input-text",
-                          "label": "钉钉工作消息内容",
-                          "name": "content",
-                          "required": true,
-                          "visibleOn": "this.sendChannel == 90",
+                          "label": "消息标题",
+                          "name": "title",
+                          "visibleOn": "this.sendChannel == 90 && (this.sendType == 110 || this.sendType == 80 ||this.sendType == 120 )",
                           "size": "lg",
-                          "clearValueOnHidden": true
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "消息内容",
+                          "name": "content",
+                          "visibleOn": "this.sendChannel == 90 && (this.sendType == 10 || this.sendType == 110 || this.sendType == 80 ||this.sendType == 120)",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "语音Id",
+                          "name": "media_id",
+                          "visibleOn": "this.sendChannel == 90 && this.sendType == 20",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "语音时长",
+                          "name": "duration",
+                          "visibleOn": "this.sendChannel == 90 && this.sendType == 20",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "文件Id",
+                          "name": "media_id",
+                          "visibleOn": "this.sendChannel == 90 && this.sendType == 60",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-table",
+                          "name": "btns",
+                          "addable": true,
+                          "editable": true,
+                          "visibleOn": "this.sendChannel == 90 && ( this.sendType == 120)",
+                          "columns": [
+                            {
+                              "name": "title",
+                              "label": "标题"
+                            },
+                            {
+                              "name": "action_url",
+                              "label": "跳转链接"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "头部标题",
+                          "name": "dingDingOaHeadTitle",
+
+                          "visibleOn": "this.sendChannel == 90 && this.sendType == 130",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "头部标题颜色",
+                          "name": "dingDingOaHeadBgColor",
+
+                          "visibleOn": "this.sendChannel == 90 && this.sendType == 130",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "页面跳转链接",
+                          "name": "url",
+
+                          "visibleOn": "this.sendChannel == 90 && (this.sendType == 110 || this.sendType == 130)",
+                          "size": "lg",
+                          "clearValueOnHidden": false,
+                          "placeholder": "可用占位符{$url}"
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "正文标题",
+                          "name": "dingDingOaTitle",
+                          "visibleOn": "this.sendChannel == 90 && this.sendType == 130",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "正文内容",
+                          "name": "dingDingOaContent",
+                          "visibleOn": "this.sendChannel == 90 && this.sendType == 130",
+                          "size": "lg",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "图片Id",
+                          "name": "media_id",
+                          "visibleOn": "this.sendChannel == 90 && (this.sendType == 100 || this.sendType == 110|| this.sendType == 130)",
+                          "size": "lg",
+                          "placeholder": "可用占位符{$media_id}",
+                          "clearValueOnHidden": false
+                        },
+                        {
+                          "type": "input-text",
+                          "label": "作者名称",
+                          "name": "dingDingOaAuthor",
+                          "visibleOn": "this.sendChannel == 90 && this.sendType == 130",
+                          "size": "lg",
+                          "clearValueOnHidden": false
                         }
                       ]
                     }
