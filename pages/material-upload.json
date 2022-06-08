@@ -1,0 +1,89 @@
+{
+  "type": "form",
+  "title": "上传素材",
+  "body": [
+    {
+      "label": "渠道类型",
+      "type": "radios",
+      "name": "sendChannel",
+      "options": [
+        {
+          "label": "服务号",
+          "value": "50"
+        },
+        {
+          "label": "小程序",
+          "value": "60"
+        },
+        {
+          "label": "企业微信",
+          "value": "70"
+        },
+        {
+          "label": "钉钉工作消息",
+          "value": "90"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "label": "渠道账号",
+      "name": "sendAccount",
+      "options": [
+        {
+          "label": "austin",
+          "value": "10"
+        },
+        {
+          "label": "athena",
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "type": "radios",
+      "label": "文件类型",
+      "name": "fileType",
+      "options": [
+        {
+          "label": "图片",
+          "value": "10"
+        },
+        {
+          "label": "语音",
+          "value": "20"
+        },
+        {
+          "label": "普通文件",
+          "value": "30"
+        },
+        {
+          "label": "视频",
+          "value": "40"
+        }
+      ]
+    },
+    {
+      "type": "input-file",
+      "label": "上传素材",
+      "name": "file",
+      "asBlob": true
+    },
+    {
+      "type": "static",
+      "name": "id",
+      "visibleOn": "typeof data.id !== 'undefined'",
+      "label": "返回 ID"
+    }
+  ],
+  "api": {
+    "url": "http://localhost:8080/material/upload",
+    "method": "post",
+    "data": {
+      "sendChannel": "${sendChannel}",
+      "sendAccount": "${sendAccount}",
+      "fileType": "${fileType}",
+      "file": "${file}"
+    }
+  }
+}

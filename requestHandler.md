@@ -83,19 +83,19 @@ if (api.data.sendChannel == '90') {
     if (sendType == '20') {
         jsonObj.sendType = sendType
         jsonObj.duration = api.data.duration
-        jsonObj.media_id = api.data.media_id
+        jsonObj.mediaId = api.data.mediaId
     }
     // 文件类型 || 图片类型
     if (sendType == '60' || sendType == '100') {
         jsonObj.sendType = sendType
-        jsonObj.media_id = api.data.media_id
+        jsonObj.mediaId = api.data.mediaId
     }
     // 链接类型
     if (sendType == '110') {
         jsonObj.content = content
         jsonObj.sendType = sendType
         jsonObj.title = title
-        jsonObj.media_id = api.data.media_id
+        jsonObj.mediaId = api.data.mediaId
         jsonObj.url = url
     }
     // markdown类型(markdown)
@@ -126,7 +126,7 @@ if (api.data.sendChannel == '90') {
         var body = {}
         body.title = api.data.dingDingOaTitle
         body.content = api.data.dingDingOaContent
-        body.image = api.data.media_id
+        body.image = api.data.mediaId
         body.author = api.data.dingDingOaAuthor
         jsonObj.dingDingOaBody = body
         
@@ -163,6 +163,7 @@ if (api.data.sendChannel == '80') {
         api.data.msgContent = JSON.stringify(jsonObj)
     }
 }
+
 
 
 return api;

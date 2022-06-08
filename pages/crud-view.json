@@ -633,11 +633,11 @@
             {
               "type": "input-text",
               "label": "语音Id",
-              "name": "media_id",
+              "name": "mediaId",
               "required": true,
               "visibleOn": "this.sendChannel == 90 && this.sendType == 20",
               "size": "lg",
-              "placeholder": "可用占位符{$media_id}",
+              "placeholder": "可用占位符{$mediaId}",
               "clearValueOnHidden": false
             },
             {
@@ -653,11 +653,11 @@
             {
               "type": "input-text",
               "label": "文件Id",
-              "name": "media_id",
+              "name": "mediaId",
               "required": true,
               "visibleOn": "this.sendChannel == 90 && this.sendType == 60",
               "size": "lg",
-              "placeholder": "可用占位符{$media_id}",
+              "placeholder": "可用占位符{$mediaId}",
               "clearValueOnHidden": false
             },
             {
@@ -742,10 +742,10 @@
             {
               "type": "input-text",
               "label": "图片Id",
-              "name": "media_id",
+              "name": "mediaId",
               "visibleOn": "this.sendChannel == 90 && (this.sendType == 100 || this.sendType == 110|| this.sendType == 130)",
               "size": "lg",
-              "placeholder": "可用占位符{$media_id}",
+              "placeholder": "可用占位符{$mediaId}",
               "clearValueOnHidden": false
             },
             {

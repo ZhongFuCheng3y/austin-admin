@@ -68,7 +68,24 @@
             ]
           }
         ]
-
+      },
+      {
+        "label": "素材管理",
+        "children": [
+          {
+            "label": "渠道物料管理",
+            "url": "/crud",
+            "rewrite": "/crud/list",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "url": "material/upload",
+                "label": "上传素材",
+                "schemaApi": "get:/pages/material-upload.json"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

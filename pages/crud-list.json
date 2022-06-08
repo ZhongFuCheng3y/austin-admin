@@ -124,13 +124,29 @@
                       "api": {
                         "url": "http://localhost:8080/messageTemplate/test",
                         "method": "post",
-                        "requestAdaptor": "let jsonObj = {};\n\nlet content = JSON.parse(api.data.msgContent).content\nlet url = JSON.parse(api.data.msgContent).url\nlet title = JSON.parse(api.data.msgContent).title\nlet sendType = JSON.parse(api.data.msgContent).sendType\nlet picUrl = JSON.parse(api.data.msgContent).picUrl\n\n\n// 钉钉机器人\nif (api.data.sendChannel == '80') {\n    // 图文类型(FeedCard)\n    if (sendType == '40') {\n        jsonObj.feedCards = JSON.stringify(api.data.feedCards)\n        api.data.msgContent = JSON.stringify(jsonObj)\n    }\n}\n\n\nreturn api;",
+                        "requestAdaptor": "let jsonObj = {};\n\nlet content = JSON.parse(api.data.msgContent).content\nlet url = JSON.parse(api.data.msgContent).url\nlet title = JSON.parse(api.data.msgContent).title\nlet sendType = JSON.parse(api.data.msgContent).sendType\nlet picUrl = JSON.parse(api.data.msgContent).picUrl\n\n\n// push通知栏\nif(api.data.sendChannel == '20'){\n    jsonObj.content = content\n    jsonObj.url = url\n    jsonObj.title = title\n}\n// 短信\nif(api.data.sendChannel == '30'){\n    jsonObj.url = url\n    jsonObj.content = content\n}\n// 邮件\nif(api.data.sendChannel == '40'){\n    jsonObj.content = content\n    jsonObj.title = title\n}\n// 企业微信\nif (api.data.sendChannel == '70') {\n    // 文本类型\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n}\n// 钉钉机器人\nif (api.data.sendChannel == '80') {\n    // 文本类型(text)\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n    // 图文类型(FeedCard)\n    if (sendType == '40') {\n        jsonObj.sendType = sendType\n        jsonObj.feedCards = JSON.stringify(api.data.feedCards)\n    }\n    // markdown类型(markdown)\n    if (sendType == '80') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n    }\n    // 链接类型(link)\n    if (sendType == '110') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n        jsonObj.picUrl = picUrl\n        jsonObj.url = url\n    }\n    // 卡片跳转(actionCard)\n    if (sendType == '120') {\n        jsonObj.title = title\n        jsonObj.content = content\n        jsonObj.btnOrientation = api.data.btnOrientation\n        jsonObj.btns = JSON.stringify(api.data.btns)\n        jsonObj.sendType = sendType\n    }\n}\n// 钉钉工作消息\nif (api.data.sendChannel == '90') {\n    // 文本类型\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n    // 语音类型\n    if (sendType == '20') {\n        jsonObj.sendType = sendType\n        jsonObj.duration = api.data.duration\n        jsonObj.mediaId = api.data.mediaId\n    }\n    // 文件类型 || 图片类型\n    if (sendType == '60' || sendType == '100') {\n        jsonObj.sendType = sendType\n        jsonObj.mediaId = api.data.mediaId\n    }\n    // 链接类型\n    if (sendType == '110') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n        jsonObj.mediaId = api.data.mediaId\n        jsonObj.url = url\n    }\n    // markdown类型(markdown)\n    if (sendType == '80') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n    }\n    // 卡片跳转(actionCard)\n    if (sendType == '120') {\n        jsonObj.title = title\n        jsonObj.content = content\n        jsonObj.btnOrientation = api.data.btnOrientation\n        jsonObj.btns = JSON.stringify(api.data.btns)\n        jsonObj.sendType = sendType\n    }\n    \n    // OA(actionCard)\n    if (sendType == '130') {\n        \n        // 头部\n        var head = {}\n        head.bgcolor = api.data.dingDingOaHeadBgColor\n        head.text = api.data.dingDingOaHeadTitle\n        jsonObj.dingDingOaHead = head\n        \n        // body\n        var body = {}\n        body.title = api.data.dingDingOaTitle\n        body.content = api.data.dingDingOaContent\n        body.image = api.data.mediaId\n        body.author = api.data.dingDingOaAuthor\n        jsonObj.dingDingOaBody = body\n        \n        // 通用\n        jsonObj.sendType = sendType\n        jsonObj.url = url\n    }\n}\n\napi.data.msgContent = JSON.stringify(jsonObj)\nreturn api;",
                         "data": {
                           "id": "${id}",
                           "name": "${name}",
                           "receiver": "${receiver}",
+                          "msgType": "${msgType}",
+                          "templateType": "${templateType}",
+                          "expectPushTime": "${expectPushTime}",
+                          "proposer": "${proposer}",
                           "sendChannel": "${sendChannel}",
+                          "sendAccount": "${sendAccount}",
+                          "cronCrowdPath": "${cronCrowdPath}",
+                          "shieldType": "${shieldType}",
                           "feedCards": "${feedCards}",
+                          "btnOrientation": "${btnOrientation}",
+                          "btns": "${btns}",
+                          "mediaId": "${mediaId}",
+                          "duration": "${duration}",
+                          "dingDingOaHeadTitle": "${dingDingOaHeadTitle}",
+                          "dingDingOaHeadBgColor": "${dingDingOaHeadBgColor}",
+                          "dingDingOaTitle": "${dingDingOaTitle}",
+                          "dingDingOaContent": "${dingDingOaContent}",
+                          "dingDingOaAuthor": "${dingDingOaAuthor}",
                           "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\",\"sendType\":\"${sendType}\",\"picUrl\":\"${picUrl}\"}"
                         }
                       },
@@ -401,7 +417,7 @@
                         {
                           "type": "input-text",
                           "label": "语音Id",
-                          "name": "media_id",
+                          "name": "mediaId",
                           "visibleOn": "this.sendChannel == 90 && this.sendType == 20",
                           "size": "lg",
                           "clearValueOnHidden": false
@@ -417,7 +433,7 @@
                         {
                           "type": "input-text",
                           "label": "文件Id",
-                          "name": "media_id",
+                          "name": "mediaId",
                           "visibleOn": "this.sendChannel == 90 && this.sendType == 60",
                           "size": "lg",
                           "clearValueOnHidden": false
@@ -486,10 +502,10 @@
                         {
                           "type": "input-text",
                           "label": "图片Id",
-                          "name": "media_id",
+                          "name": "mediaId",
                           "visibleOn": "this.sendChannel == 90 && (this.sendType == 100 || this.sendType == 110|| this.sendType == 130)",
                           "size": "lg",
-                          "placeholder": "可用占位符{$media_id}",
+                          "placeholder": "可用占位符{$mediaId}",
                           "clearValueOnHidden": false
                         },
                         {
