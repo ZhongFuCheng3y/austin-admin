@@ -562,6 +562,14 @@
                 },
                 {
                   "type": "button",
+                  "label": "撤回",
+                  "level": "danger",
+                  "actionType": "ajax",
+                  "confirmText": "您确认要撤回?",
+                  "api": "post:http://localhost:8080/messageTemplate/recall/$id"
+                },
+                {
+                  "type": "button",
                   "label": "删除",
                   "level": "danger",
                   "actionType": "ajax",
