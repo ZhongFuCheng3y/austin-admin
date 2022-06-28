@@ -136,6 +136,19 @@ if (api.data.sendChannel == '90') {
     }
 }
 
+// 飞书群机器人
+if (api.data.sendChannel == '110') {
+    // 文本类型
+    if (sendType == '10') {
+        jsonObj.content = content
+        jsonObj.sendType = sendType
+    }
+
+    // 通用
+    jsonObj.sendType = sendType
+    jsonObj.url = url
+}
+
 api.data.msgContent = JSON.stringify(jsonObj)
 return api;
 

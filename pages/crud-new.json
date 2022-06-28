@@ -67,6 +67,10 @@
                 {
                   "label": "推送通知栏cid",
                   "value": "80"
+                },
+                {
+                  "label": "飞书userId",
+                  "value": "90"
                 }
               ],
               "required": true
@@ -215,6 +219,14 @@
                 {
                   "label": "钉钉工作消息",
                   "value": "90"
+                },
+                {
+                  "label": "企业微信机器人",
+                  "value": "100"
+                },
+                {
+                  "label": "飞书机器人",
+                  "value": "110"
                 }
               ],
               "required": true
@@ -337,6 +349,77 @@
               "size": "lg",
               "clearValueOnHidden": false,
               "placeholder": "可用占位符{$content}，可输入HTML"
+            },
+            {
+              "type": "select",
+              "label": "飞书机器人",
+              "name": "sendAccount",
+              "options": [
+                {
+                  "label": "austin",
+                  "value": "10"
+                },
+                {
+                  "label": "athena",
+                  "value": "20"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 110",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "name": "sendType",
+              "label": "发送类型",
+              "type": "radios",
+              "options": [
+                {
+                  "label": "文本",
+                  "value": "10"
+                },
+
+                {
+                  "label": "图片",
+                  "value": "100"
+                },
+                {
+                  "label": "跳转卡片",
+                  "value": "120"
+                },
+                {
+                  "label": "富文本",
+                  "value": "150"
+                },
+                {
+                  "label": "群卡片",
+                  "value": "160"
+                }
+              ],
+              "visibleOn": "this.sendChannel == 110",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "type": "input-text",
+              "label": "飞书内容",
+              "name": "content",
+              "required": true,
+              "visibleOn": "this.sendChannel == 110 && this.sendType ==10 ",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$content}"
+            },
+            {
+              "type": "input-text",
+              "label": "图片标识",
+              "name": "mediaId",
+              "required": true,
+              "visibleOn": "this.sendChannel == 110 && this.sendType ==100 ",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$mediaId}"
             },
             {
               "type": "select",
@@ -792,7 +875,7 @@
       "api": {
         "url": "http://localhost:8080/messageTemplate/save",
         "method": "post",
-        "requestAdaptor": "let jsonObj = {};\n\nlet content = JSON.parse(api.data.msgContent).content\nlet url = JSON.parse(api.data.msgContent).url\nlet title = JSON.parse(api.data.msgContent).title\nlet sendType = JSON.parse(api.data.msgContent).sendType\nlet picUrl = JSON.parse(api.data.msgContent).picUrl\n\n\n// push通知栏\nif(api.data.sendChannel == '20'){\n    jsonObj.content = content\n    jsonObj.url = url\n    jsonObj.title = title\n}\n// 短信\nif(api.data.sendChannel == '30'){\n    jsonObj.url = url\n    jsonObj.content = content\n}\n// 邮件\nif(api.data.sendChannel == '40'){\n    jsonObj.content = content\n    jsonObj.title = title\n}\n// 企业微信\nif (api.data.sendChannel == '70') {\n    // 文本类型\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n}\n// 钉钉机器人\nif (api.data.sendChannel == '80') {\n    // 文本类型(text)\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n    // 图文类型(FeedCard)\n    if (sendType == '40') {\n        jsonObj.sendType = sendType\n        jsonObj.feedCards = JSON.stringify(api.data.feedCards)\n    }\n    // markdown类型(markdown)\n    if (sendType == '80') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n    }\n    // 链接类型(link)\n    if (sendType == '110') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n        jsonObj.picUrl = picUrl\n        jsonObj.url = url\n    }\n    // 卡片跳转(actionCard)\n    if (sendType == '120') {\n        jsonObj.title = title\n        jsonObj.content = content\n        jsonObj.btnOrientation = api.data.btnOrientation\n        jsonObj.btns = JSON.stringify(api.data.btns)\n        jsonObj.sendType = sendType\n    }\n}\n// 钉钉工作消息\nif (api.data.sendChannel == '90') {\n    // 文本类型\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n    // 语音类型\n    if (sendType == '20') {\n        jsonObj.sendType = sendType\n        jsonObj.duration = api.data.duration\n        jsonObj.mediaId = api.data.mediaId\n    }\n    // 文件类型 || 图片类型\n    if (sendType == '60' || sendType == '100') {\n        jsonObj.sendType = sendType\n        jsonObj.mediaId = api.data.mediaId\n    }\n    // 链接类型\n    if (sendType == '110') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n        jsonObj.mediaId = api.data.mediaId\n        jsonObj.url = url\n    }\n    // markdown类型(markdown)\n    if (sendType == '80') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n    }\n    // 卡片跳转(actionCard)\n    if (sendType == '120') {\n        jsonObj.title = title\n        jsonObj.content = content\n        jsonObj.btnOrientation = api.data.btnOrientation\n        jsonObj.btns = JSON.stringify(api.data.btns)\n        jsonObj.sendType = sendType\n    }\n    \n    // OA(actionCard)\n    if (sendType == '130') {\n        \n        // 头部\n        var head = {}\n        head.bgcolor = api.data.dingDingOaHeadBgColor\n        head.text = api.data.dingDingOaHeadTitle\n        jsonObj.dingDingOaHead = head\n        \n        // body\n        var body = {}\n        body.title = api.data.dingDingOaTitle\n        body.content = api.data.dingDingOaContent\n        body.image = api.data.mediaId\n        body.author = api.data.dingDingOaAuthor\n        jsonObj.dingDingOaBody = body\n        \n        // 通用\n        jsonObj.sendType = sendType\n        jsonObj.url = url\n    }\n}\n\napi.data.msgContent = JSON.stringify(jsonObj)",
+        "requestAdaptor": "\nlet jsonObj = {};\n\nlet content = JSON.parse(api.data.msgContent).content\nlet url = JSON.parse(api.data.msgContent).url\nlet title = JSON.parse(api.data.msgContent).title\nlet sendType = JSON.parse(api.data.msgContent).sendType\nlet picUrl = JSON.parse(api.data.msgContent).picUrl\n\n\n// push通知栏\nif(api.data.sendChannel == '20'){\n    jsonObj.content = content\n    jsonObj.url = url\n    jsonObj.title = title\n}\n// 短信\nif(api.data.sendChannel == '30'){\n    jsonObj.url = url\n    jsonObj.content = content\n}\n// 邮件\nif(api.data.sendChannel == '40'){\n    jsonObj.content = content\n    jsonObj.title = title\n}\n// 企业微信\nif (api.data.sendChannel == '70') {\n    // 文本类型\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n}\n// 钉钉机器人\nif (api.data.sendChannel == '80') {\n    // 文本类型(text)\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n    // 图文类型(FeedCard)\n    if (sendType == '40') {\n        jsonObj.sendType = sendType\n        jsonObj.feedCards = JSON.stringify(api.data.feedCards)\n    }\n    // markdown类型(markdown)\n    if (sendType == '80') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n    }\n    // 链接类型(link)\n    if (sendType == '110') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n        jsonObj.picUrl = picUrl\n        jsonObj.url = url\n    }\n    // 卡片跳转(actionCard)\n    if (sendType == '120') {\n        jsonObj.title = title\n        jsonObj.content = content\n        jsonObj.btnOrientation = api.data.btnOrientation\n        jsonObj.btns = JSON.stringify(api.data.btns)\n        jsonObj.sendType = sendType\n    }\n}\n// 钉钉工作消息\nif (api.data.sendChannel == '90') {\n    // 文本类型\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n    // 语音类型\n    if (sendType == '20') {\n        jsonObj.sendType = sendType\n        jsonObj.duration = api.data.duration\n        jsonObj.mediaId = api.data.mediaId\n    }\n    // 文件类型 || 图片类型\n    if (sendType == '60' || sendType == '100') {\n        jsonObj.sendType = sendType\n        jsonObj.mediaId = api.data.mediaId\n    }\n    // 链接类型\n    if (sendType == '110') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n        jsonObj.mediaId = api.data.mediaId\n        jsonObj.url = url\n    }\n    // markdown类型(markdown)\n    if (sendType == '80') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n        jsonObj.title = title\n    }\n    // 卡片跳转(actionCard)\n    if (sendType == '120') {\n        jsonObj.title = title\n        jsonObj.content = content\n        jsonObj.btnOrientation = api.data.btnOrientation\n        jsonObj.btns = JSON.stringify(api.data.btns)\n        jsonObj.sendType = sendType\n    }\n    \n    // OA(actionCard)\n    if (sendType == '130') {\n        \n        // 头部\n        var head = {}\n        head.bgcolor = api.data.dingDingOaHeadBgColor\n        head.text = api.data.dingDingOaHeadTitle\n        jsonObj.dingDingOaHead = head\n        \n        // body\n        var body = {}\n        body.title = api.data.dingDingOaTitle\n        body.content = api.data.dingDingOaContent\n        body.image = api.data.mediaId\n        body.author = api.data.dingDingOaAuthor\n        jsonObj.dingDingOaBody = body\n        \n        // 通用\n        jsonObj.sendType = sendType\n        jsonObj.url = url\n    }\n}\n\n// 飞书群机器人\nif (api.data.sendChannel == '110') {\n    // 文本类型\n    if (sendType == '10') {\n        jsonObj.content = content\n        jsonObj.sendType = sendType\n    }\n\n    // 通用\n    jsonObj.sendType = sendType\n    jsonObj.url = url\n}\n\napi.data.msgContent = JSON.stringify(jsonObj)\nreturn api;",
         "data": {
           "name": "${name}",
           "idType": "${idType}",
