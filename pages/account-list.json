@@ -1,0 +1,88 @@
+{
+  "type": "page",
+  "title": "列表管理",
+  "body": [
+    {
+      "type": "crud",
+      "api": "http://localhost:8080/account/list",
+      "bodyClassName": "panel-default",
+      "name": "sample",
+      "columns": [
+        {
+          "name": "id",
+          "label": "ID",
+          "width": 20,
+          "sortable": true
+        },
+        {
+          "name": "name",
+          "label": "账号名称"
+        },
+        {
+          "name": "accountConfig",
+          "label": "账号配置信息"
+        },
+        {
+          "name": "sendChannel",
+          "label": "发送渠道",
+          "type": "mapping",
+          "map": {
+            "10": "IM站内信",
+            "20": "PUSH通知栏",
+            "30": "短信",
+            "40": "邮箱",
+            "50": "服务号",
+            "60": "小程序",
+            "70": "企业微信应用消息",
+            "80": "钉钉群机器人",
+            "90": "钉钉工作消息",
+            "100": "企业微信机器人",
+            "110": "飞书机器人"
+          }
+        },
+        {
+          "type": "operation",
+          "label": "操作",
+          "width": "",
+          "buttons": [
+            {
+              "type": "button-group",
+              "buttons": [
+                {
+                  "type": "button",
+                  "label": "删除",
+                  "level": "danger",
+                  "actionType": "ajax",
+                  "confirmText": "您确认要删除?",
+                  "api": "delete:http://localhost:8080/account/delete/$id"
+                }
+              ]
+            }
+          ],
+          "placeholder": "-",
+          "fixed": "right"
+        }
+      ],
+      "affixHeader": true,
+      "columnsTogglable": "auto",
+      "placeholder": "暂无数据",
+      "tableClassName": "table-db table-striped",
+      "headerClassName": "crud-table-header",
+      "footerClassName": "crud-table-footer",
+      "toolbarClassName": "crud-table-toolbar",
+      "combineNum": 0
+    }
+  ],
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/account/new",
+      "label": "新增",
+      "icon": "fa fa-plus",
+      "primary": true
+    }
+  ],
+  "remark": null,
+  "name": "page-demo"
+}

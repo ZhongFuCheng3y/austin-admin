@@ -86,6 +86,30 @@
             ]
           }
         ]
+      },
+      {
+        "label": "账号管理",
+        "children": [
+          {
+            "label": "渠道账号管理",
+            "url": "/crud",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "label": "新增账号",
+                "url": "/account/new",
+                "icon": "fa fa-plus",
+                "schemaApi": "get:/pages/account-new.json"
+              },
+              {
+                "url": "account/list",
+                "label": "渠道账号",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/account-list.json"
+              }
+            ]
+          }
+        ]
       }
     ]
   }
