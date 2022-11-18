@@ -14,7 +14,6 @@
           {
             "label": "消息模板管理",
             "url": "/crud",
-            "rewrite": "/crud/list",
             "icon": "fa fa-cube",
             "children": [
               {
@@ -47,7 +46,6 @@
           {
             "label": "全链路追踪",
             "url": "/crud",
-            "rewrite": "/crud/list",
             "icon": "fa fa-cube",
             "children": [
               {
@@ -75,7 +73,7 @@
           {
             "label": "渠道物料管理",
             "url": "/crud",
-            "rewrite": "/crud/list",
+
             "icon": "fa fa-cube",
             "children": [
               {
