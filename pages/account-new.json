@@ -106,7 +106,7 @@
               "visibleOn": "this.sendChannel ==30",
               "mode": "normal",
               "inline": true,
-              "label": "腾讯云账号样例：{\n    \"url\": \"sms.tencentcloudapi.com\",\n    \"region\": \"ap-guangzhou\",\n    \"secretId\": \"234234\",\n    \"secretKey\": \"234324324\",\n    \"smsSdkAppId\": \"2343242\",\n    \"templateId\": \"234234\",\n    \"signName\": \"Java3y公众号\",\n    \"supplierId\": 10,\n    \"supplierName\": \"腾讯云\"\n}</br></br>  云片账号配置样例：{\n    \"url\": \"https://sms.yunpian.com/v2/sms/tpl_batch_send.json\",\n    \"apikey\": \"23423432\",\n    \"tpl_id\": \"23423432\",\n    \"supplierId\": 20,\n    \"supplierName\": \"云片\"\n}"
+              "label": "腾讯云账号样例：{\"url\":\"sms.tencentcloudapi.com\",\"region\":\"ap-guangzhou\",\"secretId\":\"AKIDhDxxxxxxxx1WljQq\",\"secretKey\":\"B4hwww39yxxxrrrrgxyi\",\"smsSdkAppId\":\"1423123125\",\"templateId\":\"1182097\",\"signName\":\"Java3y公众号\",\"supplierId\":10,\"supplierName\":\"腾讯云\",\"scriptName\":\"TencentSmsScript\"}</br></br>  云片账号配置样例：{\"url\":\"https://sms.yunpian.com/v2/sms/tpl_batch_send.json\",\"apikey\":\"caffff8234234231b5cd7\",\"tpl_id\":\"523333332\",\"supplierId\":20,\"supplierName\":\"云片\",\"scriptName\":\"YunPianSmsScript\"}"
             },
             {
               "type": "static",
@@ -189,7 +189,7 @@
       "affixFooter": true,
       "panelClassName": "Panel--default",
       "bodyClassName": "text-lg",
-      "redirect": "/crud/list",
+      "redirect": "/crud/account/list?page=1",
       "api": {
         "url": "http://localhost:8080/account/save",
         "method": "post",

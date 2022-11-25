@@ -232,16 +232,19 @@
               "required": true
             },
             {
+              "type": "hidden",
+              "name": "sendAccount",
+              "value": "0",
+              "visibleOn": "this.sendChannel == 30"
+            },
+            {
               "type": "input-text",
               "label": "短信账号",
-              "name": "sendAccount",
               "disabled": true,
-              "value": "0",
-              "placeholder": "自动会根据消息类型选择发送账号",
-              "description": "自动会根据消息类型选择发送账号",
+              "value": "根据【消息类型】按流量分配到对应短信渠道",
               "visibleOn": "this.sendChannel == 30",
               "clearValueOnHidden": false,
-              "required": true,
+              "required": false,
               "size": "lg"
             },
             {
@@ -268,12 +271,7 @@
               "type": "select",
               "label": "发送账号",
               "name": "sendAccount",
-              "options": [
-                {
-                  "label": "个推",
-                  "value": "10"
-                }
-              ],
+              "source": "http://localhost:8080/account/queryByChannelType?channelType=20",
               "visibleOn": "this.sendChannel == 20",
               "clearValueOnHidden": false,
               "required": true,
@@ -315,16 +313,7 @@
               "type": "select",
               "label": "邮件账号",
               "name": "sendAccount",
-              "options": [
-                {
-                  "label": "QQ邮箱",
-                  "value": "10"
-                },
-                {
-                  "label": "163邮箱",
-                  "value": "20"
-                }
-              ],
+              "source": "http://localhost:8080/account/queryByChannelType?channelType=40",
               "visibleOn": "this.sendChannel == 40",
               "clearValueOnHidden": false,
               "required": true,
@@ -354,16 +343,7 @@
               "type": "select",
               "label": "飞书机器人",
               "name": "sendAccount",
-              "options": [
-                {
-                  "label": "austin",
-                  "value": "10"
-                },
-                {
-                  "label": "athena",
-                  "value": "20"
-                }
-              ],
+              "source": "http://localhost:8080/account/queryByChannelType?channelType=110",
               "visibleOn": "this.sendChannel == 110",
               "clearValueOnHidden": false,
               "required": true,
@@ -425,16 +405,7 @@
               "type": "select",
               "label": "企业微信应用",
               "name": "sendAccount",
-              "options": [
-                {
-                  "label": "austin",
-                  "value": "10"
-                },
-                {
-                  "label": "athena",
-                  "value": "20"
-                }
-              ],
+              "source": "http://localhost:8080/account/queryByChannelType?channelType=70",
               "visibleOn": "this.sendChannel == 70",
               "clearValueOnHidden": false,
               "required": true,
@@ -444,16 +415,7 @@
               "type": "select",
               "label": "钉钉群机器人",
               "name": "sendAccount",
-              "options": [
-                {
-                  "label": "austin",
-                  "value": "10"
-                },
-                {
-                  "label": "athena",
-                  "value": "20"
-                }
-              ],
+              "source": "http://localhost:8080/account/queryByChannelType?channelType=80",
               "visibleOn": "this.sendChannel == 80",
               "clearValueOnHidden": false,
               "required": true,
@@ -463,16 +425,7 @@
               "type": "select",
               "label": "钉钉应用",
               "name": "sendAccount",
-              "options": [
-                {
-                  "label": "austin",
-                  "value": "10"
-                },
-                {
-                  "label": "athena",
-                  "value": "20"
-                }
-              ],
+              "source": "http://localhost:8080/account/queryByChannelType?channelType=90",
               "visibleOn": "this.sendChannel == 90",
               "clearValueOnHidden": false,
               "required": true,

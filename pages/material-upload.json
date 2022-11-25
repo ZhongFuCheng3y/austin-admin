@@ -6,6 +6,7 @@
       "label": "渠道类型",
       "type": "radios",
       "name": "sendChannel",
+      "required": true,
       "options": [
         {
           "label": "服务号",
@@ -27,23 +28,49 @@
     },
     {
       "type": "select",
-      "label": "渠道账号",
+      "label": "服务号账号",
       "name": "sendAccount",
-      "options": [
-        {
-          "label": "austin",
-          "value": "10"
-        },
-        {
-          "label": "athena",
-          "value": "20"
-        }
-      ]
+      "source": "http://localhost:8080/account/queryByChannelType?channelType=50",
+      "visibleOn": "this.sendChannel == 50",
+      "clearValueOnHidden": false,
+      "required": true,
+      "size": "lg"
+    },
+    {
+      "type": "select",
+      "label": "小程序账号",
+      "name": "sendAccount",
+      "source": "http://localhost:8080/account/queryByChannelType?channelType=60",
+      "visibleOn": "this.sendChannel == 60",
+      "clearValueOnHidden": false,
+      "required": true,
+      "size": "lg"
+    },
+    {
+      "type": "select",
+      "label": "企业微信账号",
+      "name": "sendAccount",
+      "source": "http://localhost:8080/account/queryByChannelType?channelType=70",
+      "visibleOn": "this.sendChannel == 70",
+      "clearValueOnHidden": false,
+      "required": true,
+      "size": "lg"
+    },
+    {
+      "type": "select",
+      "label": "钉钉工作消息账号",
+      "name": "sendAccount",
+      "source": "http://localhost:8080/account/queryByChannelType?channelType=90",
+      "visibleOn": "this.sendChannel == 90",
+      "clearValueOnHidden": false,
+      "required": true,
+      "size": "lg"
     },
     {
       "type": "radios",
       "label": "文件类型",
       "name": "fileType",
+      "required": true,
       "options": [
         {
           "label": "图片",
@@ -67,6 +94,7 @@
       "type": "input-file",
       "label": "上传素材",
       "name": "file",
+      "required": true,
       "asBlob": true
     },
     {
