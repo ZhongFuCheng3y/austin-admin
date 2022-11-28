@@ -130,7 +130,7 @@
               "visibleOn": "this.sendChannel ==50",
               "mode": "normal",
               "inline": true,
-              "label": "服务号账号样例："
+              "label": "服务号账号样例：{\"appId\":\"wx27f83ca10e06b325\",\"secret\":\"203299484df873a18621d076db46fa99\"}"
             },
             {
               "type": "static",

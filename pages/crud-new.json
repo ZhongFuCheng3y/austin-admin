@@ -311,6 +311,33 @@
             },
             {
               "type": "select",
+              "label": "服务号账号",
+              "name": "sendAccount",
+              "source": "http://localhost:8080/account/queryByChannelType?channelType=50",
+              "visibleOn": "this.sendChannel == 50",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "type": "select",
+              "label": "选择模板",
+              "name": "templateId",
+              "source": "http://localhost:8080/officialAccount/template/list?id=${sendAccount}",
+              "visibleOn": "this.sendChannel == 50",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg",
+              "initFetchOn": "data.sendAccount"
+            },
+            {
+              "type": "service",
+              "className": "m-t",
+              "initFetchSchemaOn": "data.templateId",
+              "schemaApi": "http://localhost:8080/officialAccount/template/detailTemplate?id=${sendAccount}&wxTemplateId=${templateId}"
+            },
+            {
+              "type": "select",
               "label": "邮件账号",
               "name": "sendAccount",
               "source": "http://localhost:8080/account/queryByChannelType?channelType=40",
