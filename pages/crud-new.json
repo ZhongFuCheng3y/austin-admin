@@ -332,9 +332,8 @@
             },
             {
               "type": "service",
-              "className": "m-t",
-              "initFetchSchemaOn": "data.templateId",
-              "schemaApi": "http://localhost:8080/officialAccount/template/detailTemplate?id=${sendAccount}&wxTemplateId=${templateId}"
+              "schemaApi": "http://localhost:8080/officialAccount/detailTemplate?id=${sendAccount}&wxTemplateId=${templateId}",
+              "visibleOn": "this.sendChannel == 50"
             },
             {
               "type": "select",
@@ -877,6 +876,7 @@
           "dingDingOaTitle": "${dingDingOaTitle}",
           "dingDingOaContent": "${dingDingOaContent}",
           "dingDingOaAuthor": "${dingDingOaAuthor}",
+          "officialAccountParam": "${officialAccountParam}",
           "msgContent": "{\"content\":\"${content}\",\"url\":\"${url}\",\"title\":\"${title}\",\"sendType\":\"${sendType}\",\"picUrl\":\"${picUrl}\"}"
         }
       }
