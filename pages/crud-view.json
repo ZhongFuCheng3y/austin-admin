@@ -179,7 +179,7 @@
                   "value": "40"
                 },
                 {
-                  "label": "服务号",
+                  "label": "微信服务号（模板消息）",
                   "value": "50"
                 },
                 {
@@ -238,6 +238,84 @@
               "size": "lg",
               "clearValueOnHidden": false,
               "placeholder": "可用占位符{$url}"
+            },
+            {
+              "type": "select",
+              "label": "服务号账号",
+              "name": "sendAccount",
+              "source": "http://localhost:8080/account/queryByChannelType?channelType=50",
+              "visibleOn": "this.sendChannel == 50",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "type": "select",
+              "label": "选择模板",
+              "name": "templateId",
+              "source": "http://localhost:8080/officialAccount/template/list?id=${sendAccount}",
+              "visibleOn": "this.sendChannel == 50",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg",
+              "initFetchOn": "data.sendAccount"
+            },
+            {
+              "type": "radios",
+              "name": "linkType",
+              "label": "跳转落地页",
+              "visibleOn": "this.sendChannel == 50",
+              "options": [
+                {
+                  "label": "HTTP链接",
+                  "value": "10"
+                },
+                {
+                  "label": "小程序",
+                  "value": "20"
+                }
+              ],
+              "required": true
+            },
+            {
+              "type": "input-text",
+              "label": "发送链接",
+              "name": "url",
+              "required": true,
+              "visibleOn": "this.sendChannel == 50 && this.linkType==10",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$url}"
+            },
+            {
+              "type": "select",
+              "label": "小程序",
+              "name": "miniProgramId",
+              "required": true,
+              "visibleOn": "this.sendChannel == 50 && this.linkType==20",
+              "options": [
+                {
+                  "label": "暂无可用小程序",
+                  "value": "10"
+                }
+              ],
+              "size": "lg",
+              "clearValueOnHidden": false
+            },
+            {
+              "type": "input-text",
+              "label": "发送链接",
+              "name": "path",
+              "required": true,
+              "visibleOn": "this.sendChannel == 50 && this.linkType==20",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$url}"
+            },
+            {
+              "type": "service",
+              "schemaApi": "http://localhost:8080/officialAccount/detailTemplate?id=${sendAccount}&wxTemplateId=${templateId}",
+              "visibleOn": "this.sendChannel == 50"
             },
             {
               "type": "select",
