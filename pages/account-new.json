@@ -138,7 +138,7 @@
               "visibleOn": "this.sendChannel ==60",
               "mode": "normal",
               "inline": true,
-              "label": "小程序账号样例："
+              "label": "小程序账号样例：{\"appId\":\"wx993a5323432ba86\",\"appSecret\":\"7ffffcc59e1fsdafsdafsdc0650ac1ada7\"}"
             },
             {
               "type": "static",

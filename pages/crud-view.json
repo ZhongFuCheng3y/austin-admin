@@ -319,6 +319,44 @@
             },
             {
               "type": "select",
+              "label": "小程序账号",
+              "name": "sendAccount",
+              "source": "http://localhost:8080/account/queryByChannelType?channelType=60",
+              "visibleOn": "this.sendChannel == 60",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "type": "select",
+              "label": "选择模板",
+              "name": "templateId",
+              "source": "http://localhost:8080/miniProgram/template/list?id=${sendAccount}",
+              "visibleOn": "this.sendChannel == 60",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg",
+              "initFetchOn": "data.sendAccount"
+            },
+            {
+              "type": "input-text",
+              "label": "发送链接",
+              "name": "page",
+              "required": true,
+              "visibleOn": "this.sendChannel == 60 ",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$url}"
+            },
+            {
+              "type": "service",
+              "schemaApi": "http://localhost:8080/miniProgram/detailTemplate?id=${sendAccount}&wxTemplateId=${templateId}",
+              "visibleOn": "this.sendChannel == 60",
+              "description": "<font color=\"#990000\">请点击【新增】填入文案</font>"
+            },
+
+            {
+              "type": "select",
               "label": "飞书机器人",
               "name": "sendAccount",
               "source": "http://localhost:8080/account/queryByChannelType?channelType=110",
