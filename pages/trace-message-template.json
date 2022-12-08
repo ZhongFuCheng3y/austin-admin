@@ -44,7 +44,7 @@
               "replaceChartOption": true,
               "clearPersistDataAfterSubmit": true,
               "api": {
-                "url": "http://localhost:8080/trace/messageTemplate",
+                "url": "${ls:backend_url}/trace/messageTemplate",
                 "method": "post",
                 "data": {
                   "businessId": "${name}"

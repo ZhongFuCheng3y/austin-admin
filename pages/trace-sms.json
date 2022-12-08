@@ -24,7 +24,7 @@
       "type": "crud",
       "name": "my_crud",
       "api": {
-        "url": "http://localhost:8080/trace/sms",
+        "url": "${ls:backend_url}/trace/sms",
         "method": "post",
         "data": {
           "receiver": "${phone}",

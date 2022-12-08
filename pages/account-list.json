@@ -4,7 +4,7 @@
   "body": [
     {
       "type": "crud",
-      "api": "http://localhost:8080/account/list",
+      "api": "${ls:backend_url}/account/list",
       "bodyClassName": "panel-default",
       "name": "sample",
       "columns": [
@@ -54,7 +54,7 @@
                   "level": "danger",
                   "actionType": "ajax",
                   "confirmText": "您确认要删除?",
-                  "api": "delete:http://localhost:8080/account/delete/$id"
+                  "api": "delete:${ls:backend_url}/account/delete/$id"
                 }
               ]
             }

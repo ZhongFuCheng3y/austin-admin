@@ -4,7 +4,7 @@
   "body": [
     {
       "type": "crud",
-      "api": "http://localhost:8080/messageTemplate/list",
+      "api": "${ls:backend_url}/messageTemplate/list?page=1&perPage=10",
       "bodyClassName": "panel-default",
       "name": "sample",
       "filter": {
@@ -34,7 +34,7 @@
           "type": "button",
           "level": "danger",
           "actionType": "ajax",
-          "api": "delete:http://localhost:8080/messageTemplate/delete/$ids",
+          "api": "delete:${ls:backend_url}/messageTemplate/delete/$ids",
           "confirmText": "确定要批量删除?"
         }
       ],
@@ -118,14 +118,14 @@
                   "type": "button",
                   "label": "测试",
                   "level": "primary",
-                  "initApi": "post:http://localhost:8080/messageTemplate/query/$id",
+                  "initApi": "post:${ls:backend_url}/messageTemplate/query/$id",
                   "actionType": "dialog",
                   "dialog": {
                     "title": "测试一条消息",
                     "body": {
                       "type": "form",
                       "api": {
-                        "url": "http://localhost:8080/messageTemplate/test",
+                        "url": "${ls:backend_url}/messageTemplate/test",
                         "method": "post",
                         "requestAdaptor": "api.data.msgContent = JSON.stringify(api.data.testParam[0])\nreturn api;",
                         "data": {
@@ -144,7 +144,7 @@
                         },
                         {
                           "type": "service",
-                          "schemaApi": "http://localhost:8080/messageTemplate/test/content?id=${id}"
+                          "schemaApi": "${ls:backend_url}/messageTemplate/test/content?id=${id}"
                         }
                       ]
                     }
@@ -170,7 +170,7 @@
                   "level": "success",
                   "actionType": "ajax",
                   "confirmText": "您确认要启动吗?",
-                  "api": "post:http://localhost:8080/messageTemplate/start/$id",
+                  "api": "post:${ls:backend_url}/messageTemplate/start/$id",
                   "visibleOn": "this.templateType==10 && this.msgStatus!=30"
                 },
                 {
@@ -179,7 +179,7 @@
                   "level": "success",
                   "actionType": "ajax",
                   "confirmText": "您确认要暂停吗?",
-                  "api": "post:http://localhost:8080/messageTemplate/stop/$id",
+                  "api": "post:${ls:backend_url}/messageTemplate/stop/$id",
                   "visibleOn": "this.templateType==10 && this.msgStatus==30"
                 },
                 {
@@ -188,7 +188,7 @@
                   "level": "warning",
                   "actionType": "ajax",
                   "confirmText": "您确认要复制?",
-                  "api": "post:http://localhost:8080/messageTemplate/copy/$id"
+                  "api": "post:${ls:backend_url}/messageTemplate/copy/$id"
                 },
                 {
                   "type": "button",
@@ -196,7 +196,7 @@
                   "level": "danger",
                   "actionType": "ajax",
                   "confirmText": "您确认要撤回?",
-                  "api": "post:http://localhost:8080/messageTemplate/recall/$id"
+                  "api": "post:${ls:backend_url}/messageTemplate/recall/$id"
                 },
                 {
                   "type": "button",
@@ -204,7 +204,7 @@
                   "level": "danger",
                   "actionType": "ajax",
                   "confirmText": "您确认要删除?",
-                  "api": "delete:http://localhost:8080/messageTemplate/delete/$id"
+                  "api": "delete:${ls:backend_url}/messageTemplate/delete/$id"
                 }
               ]
             }

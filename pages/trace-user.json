@@ -18,7 +18,7 @@
       "type": "crud",
       "name": "my_crud",
       "api": {
-        "url": "http://localhost:8080/trace/user",
+        "url": "${ls:backend_url}/trace/user",
         "method": "post",
         "data": {
           "receiver": "${keywords}"

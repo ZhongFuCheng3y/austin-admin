@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>amis admin</title>
+    <title>austin</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta
       name="viewport"
@@ -38,6 +38,9 @@
     <div id="root" class="app-wrapper"></div>
     <script>
       (function () {
+        // 请求后端的url
+        localStorage.setItem("backend_url", "http://localhost:8080");
+
         let amis = amisRequire('amis/embed');
         const match = amisRequire('path-to-regexp').match;
 
