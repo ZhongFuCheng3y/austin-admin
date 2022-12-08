@@ -28,10 +28,7 @@
               "label": "发送渠道",
               "type": "radios",
               "options": [
-                {
-                  "label": "IM站内信",
-                  "value": "10"
-                },
+
                 {
                   "label": "PUSH通知栏",
                   "value": "20"
@@ -45,11 +42,11 @@
                   "value": "40"
                 },
                 {
-                  "label": "服务号",
+                  "label": "微信服务号（模板消息）",
                   "value": "50"
                 },
                 {
-                  "label": "小程序",
+                  "label": "微信小程序（订阅消息）",
                   "value": "60"
                 },
                 {

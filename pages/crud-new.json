@@ -185,10 +185,6 @@
               "type": "radios",
               "options": [
                 {
-                  "label": "IM站内信",
-                  "value": "10"
-                },
-                {
                   "label": "PUSH通知栏",
                   "value": "20"
                 },
