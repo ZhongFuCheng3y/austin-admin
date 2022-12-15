@@ -4,9 +4,14 @@
   "body": [
     {
       "type": "crud",
-      "api": "${ls:backend_url}/messageTemplate/list?page=1&perPage=10",
+      "api": "${ls:backend_url}/messageTemplate/list?page=${page}&perPage=${perPage}",
       "bodyClassName": "panel-default",
+      "syncLocation": false,
       "name": "sample",
+      "footerToolbar": [
+        "switch-per-page",
+        "pagination"
+      ],
       "filter": {
         "title": "",
         "mode": "inline",

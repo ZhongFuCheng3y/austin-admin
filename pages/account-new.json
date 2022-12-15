@@ -186,7 +186,7 @@
       "affixFooter": true,
       "panelClassName": "Panel--default",
       "bodyClassName": "text-lg",
-      "redirect": "/crud/account/list?page=1",
+      "redirect": "/account/list?page=1",
       "api": {
         "url": "${ls:backend_url}/account/save",
         "method": "post",

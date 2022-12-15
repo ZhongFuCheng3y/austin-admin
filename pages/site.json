@@ -9,11 +9,26 @@
         "redirect": "/crud/list"
       },
       {
+        "label": "用户登录",
+        "children": [
+          {
+            "label": "用户登录",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "url": "/user/login",
+                "label": "用户登录",
+                "schemaApi": "get:/pages/user-login.json"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "label": "模板管理",
         "children": [
           {
             "label": "消息模板管理",
-            "url": "/crud",
             "icon": "fa fa-cube",
             "children": [
               {
@@ -45,7 +60,6 @@
         "children": [
           {
             "label": "全链路追踪",
-            "url": "/crud",
             "icon": "fa fa-cube",
             "children": [
               {
@@ -72,8 +86,6 @@
         "children": [
           {
             "label": "渠道物料管理",
-            "url": "/crud",
-
             "icon": "fa fa-cube",
             "children": [
               {
@@ -90,7 +102,6 @@
         "children": [
           {
             "label": "渠道账号管理",
-            "url": "/crud",
             "icon": "fa fa-cube",
             "children": [
               {

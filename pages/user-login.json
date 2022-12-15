@@ -1,0 +1,16 @@
+{
+  "type": "page",
+  "body": {
+    "type": "form",
+    "mode": "normal",
+    "autoFocus": false,
+    "body": [
+      {
+        "type": "service",
+        "schemaApi": "${ls:backend_url}/officialAccount/qrCode"
+      }
+    ],
+    "submitText": null,
+    "actions": []
+  }
+}
