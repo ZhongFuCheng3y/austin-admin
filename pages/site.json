@@ -9,22 +9,6 @@
         "redirect": "/crud/list"
       },
       {
-        "label": "用户登录",
-        "children": [
-          {
-            "label": "用户登录",
-            "icon": "fa fa-cube",
-            "children": [
-              {
-                "url": "/user/login",
-                "label": "用户登录",
-                "schemaApi": "get:/pages/user-login.json"
-              }
-            ]
-          }
-        ]
-      },
-      {
         "label": "模板管理",
         "children": [
           {
@@ -115,6 +99,22 @@
                 "label": "渠道账号",
                 "icon": "fa fa-list",
                 "schemaApi": "get:/pages/account-list.json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "用户登录",
+        "children": [
+          {
+            "label": "用户登录",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "url": "/user/login",
+                "label": "用户登录",
+                "schemaApi": "get:/pages/user-login.json"
               }
             ]
           }

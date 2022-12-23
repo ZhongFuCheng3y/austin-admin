@@ -4,7 +4,7 @@
   "body": [
     {
       "type": "crud",
-      "api": "${ls:backend_url}/messageTemplate/list?page=${page}&perPage=${perPage}",
+      "api": "${ls:backend_url}/messageTemplate/list?page=${page}&perPage=${perPage}&creator=${ls:openId}",
       "bodyClassName": "panel-default",
       "syncLocation": false,
       "name": "sample",
@@ -59,7 +59,6 @@
           "label": "发送渠道",
           "type": "mapping",
           "map": {
-
             "20": "PUSH通知栏",
             "30": "短信",
             "40": "邮箱",

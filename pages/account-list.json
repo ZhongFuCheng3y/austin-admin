@@ -4,7 +4,7 @@
   "body": [
     {
       "type": "crud",
-      "api": "${ls:backend_url}/account/list",
+      "api": "${ls:backend_url}/account/list?creator=${ls:openId}",
       "bodyClassName": "panel-default",
       "name": "sample",
       "columns": [
