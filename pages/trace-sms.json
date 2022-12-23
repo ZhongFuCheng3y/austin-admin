@@ -9,13 +9,15 @@
         {
           "type": "input-text",
           "name": "phone",
-          "label": "手机号:"
+          "label": "手机号:",
+          "require": true
         },
         {
           "type": "input-datetime",
           "label": "日期时间",
           "name": "dateTime",
-          "id": "u:19a52e7a9c6c"
+          "id": "u:19a52e7a9c6c",
+          "require": true
         }
       ],
       "submitText": "搜索"

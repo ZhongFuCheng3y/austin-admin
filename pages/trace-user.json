@@ -9,7 +9,8 @@
         {
           "type": "input-text",
           "name": "keywords",
-          "label": "用户ID:"
+          "label": "用户ID:",
+          "require": true
         }
       ],
       "submitText": "搜索"
