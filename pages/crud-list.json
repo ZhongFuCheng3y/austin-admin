@@ -4,7 +4,7 @@
   "body": [
     {
       "type": "crud",
-      "api": "${ls:backend_url}/messageTemplate/list?page=${page}&perPage=${perPage}",
+      "api": "${ls:backend_url}/messageTemplate/list?page=${page}&perPage=${perPage}&keywords=${keywords}",
       "bodyClassName": "panel-default",
       "syncLocation": false,
       "name": "sample",
