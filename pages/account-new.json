@@ -28,7 +28,6 @@
               "label": "发送渠道",
               "type": "radios",
               "options": [
-
                 {
                   "label": "PUSH通知栏",
                   "value": "20"
@@ -50,8 +49,12 @@
                   "value": "60"
                 },
                 {
-                  "label": "企业微信",
+                  "label": "企业微信（应用消息）",
                   "value": "70"
+                },
+                {
+                  "label": "企业微信（机器人）",
+                  "value": "100"
                 },
                 {
                   "label": "钉钉群机器人",
@@ -60,10 +63,6 @@
                 {
                   "label": "钉钉工作消息",
                   "value": "90"
-                },
-                {
-                  "label": "企业微信机器人",
-                  "value": "100"
                 },
                 {
                   "label": "飞书机器人",
@@ -147,7 +146,15 @@
               "visibleOn": "this.sendChannel ==70",
               "mode": "normal",
               "inline": true,
-              "label": "企业微信账号样例：{\"corpId\":\"23423423\",\"corpSecret\":\"-234324234\",\"agentId\":1000002,\"token\":\"234234\",\"aesKey\":\"23423423\"}"
+              "label": "企业微信（应用消息）账号样例：{\"corpId\":\"23423423\",\"corpSecret\":\"-234324234\",\"agentId\":1000002,\"token\":\"234234\",\"aesKey\":\"23423423\"}"
+            },
+            {
+              "type": "static",
+              "name": "id",
+              "visibleOn": "this.sendChannel ==100",
+              "mode": "normal",
+              "inline": true,
+              "label": "企业微信（机器人）消息样例：{\"webhook\":\"https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=5699eac1-b073-47da-9e97-xxxxxxxx\"}"
             },
             {
               "type": "static",
@@ -164,15 +171,6 @@
               "mode": "normal",
               "inline": true,
               "label": "钉钉工作消息样例：{\n    \"appKey\": \"23423423\",\n    \"appSecret\": \"tQpvmkR863dYcuKDVfM23432432432423Nlx_fYLLLlpPJWHvWKbTu\",\n    \"agentId\": \"1523423423242\"\n}"
-            }
-          ,
-            {
-              "type": "static",
-              "name": "id",
-              "visibleOn": "this.sendChannel ==100",
-              "mode": "normal",
-              "inline": true,
-              "label": "企业微信机器人消息样例："
             },
             {
               "type": "static",

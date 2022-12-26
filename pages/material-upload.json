@@ -9,26 +9,14 @@
       "required": true,
       "options": [
         {
-          "label": "服务号",
-          "value": "50"
-        },
-        {
-          "label": "小程序",
-          "value": "60"
-        },
-        {
-          "label": "企业微信",
-          "value": "70"
-        },
-        {
-          "label": "钉钉工作消息",
+          "label": "钉钉（工作消息）",
           "value": "90"
         }
       ]
     },
     {
       "type": "select",
-      "label": "服务号账号",
+      "label": "微信服务号账号",
       "name": "sendAccount",
       "source": "${ls:backend_url}/account/queryByChannelType?channelType=50&creator=${ls:openId}",
       "visibleOn": "this.sendChannel == 50",
@@ -38,7 +26,7 @@
     },
     {
       "type": "select",
-      "label": "小程序账号",
+      "label": "微信小程序账号",
       "name": "sendAccount",
       "source": "${ls:backend_url}/account/queryByChannelType?channelType=60&creator=${ls:openId}",
       "visibleOn": "this.sendChannel == 60",
@@ -48,7 +36,7 @@
     },
     {
       "type": "select",
-      "label": "企业微信账号",
+      "label": "企业微信（工作消息）",
       "name": "sendAccount",
       "source": "${ls:backend_url}/account/queryByChannelType?channelType=70&creator=${ls:openId}",
       "visibleOn": "this.sendChannel == 70",
@@ -58,7 +46,7 @@
     },
     {
       "type": "select",
-      "label": "钉钉工作消息账号",
+      "label": "钉钉（工作消息）账号",
       "name": "sendAccount",
       "source": "${ls:backend_url}/account/queryByChannelType?channelType=90&creator=${ls:openId}",
       "visibleOn": "this.sendChannel == 90",
