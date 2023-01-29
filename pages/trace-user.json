@@ -2,7 +2,7 @@
   "type": "page",
   "body": [
     {
-      "title": "查询条件",
+      "title": "查询条件（只能查当天）",
       "type": "form",
       "target": "my_crud",
       "body": [

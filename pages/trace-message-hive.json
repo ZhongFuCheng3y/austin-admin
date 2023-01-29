@@ -1,0 +1,90 @@
+{
+  "title": "表单各种展示模式汇总",
+  "remark": "展示各种模式的 Form",
+  "body": [
+    {
+      "type": "form",
+      "className": "m-b",
+      "body": [
+        {
+          "type": "static",
+          "label": "数据仓库地址：",
+          "description": "<a href=\"http://139.9.66.219:5001\" target=\"_blank\"><font color=\"#990000\">http://localhost:5001/</font></a></br></br>由于数仓存储着下发记录，不对外公开地址"
+
+        },
+        {
+          "type": "static",
+          "label": "选择数据源：",
+          "description": "<font color=\"#990000\">austin_presto</font>"
+        },
+        {
+          "type": "static",
+          "label": "选择数据表：",
+          "description": "<font color=\"#990000\">message_anchor</font>"
+        },
+        {
+          "type": "static",
+          "label": "message_anchor表businessId字段含义：",
+          "description": "<font color=\"#990000\">businessId=模板类型+模板ID+当天日期</br>eg:2000044620230129</br>前2位为模板类型：10、定时类的模板(后台定时调用) 20、实时类的模板(接口实时调用)</br>中间6位为模板Id：446为模板Id，不够6位在前面补0</br>后8位为下发的日期：20230129</br>(固定16位)</font>"
+
+        },
+        {
+          "type": "property",
+          "title": "埋点配置枚举表",
+          "items": [
+            {
+              "label": "消息接收成功（获取到请求）",
+              "content": "10",
+              "span": 3
+            },
+            {
+              "label": "消息被丢弃（从Kafka消费后，被丢弃）",
+              "content": "20",
+              "span": 3
+            },
+            {
+              "label": "消息被夜间屏蔽（模板设置了夜间屏蔽）",
+              "content": "22",
+              "span": 3
+            },
+            {
+              "label": "消息被夜间屏蔽（模板设置了夜间屏蔽，次日9点再发送）",
+              "content": "24",
+              "span": 3
+            },
+            {
+              "label": "消息被内容去重（重复内容5min内多次发送）",
+              "content": "30",
+              "span": 3
+            },
+            {
+              "label": "消息被频次去重（同一个渠道短时间内发送多次消息给用户）",
+              "content": "40",
+              "span": 3
+            },
+            {
+              "label": "白名单过滤（非正式环境，不在白名单内）",
+              "content": "50",
+              "span": 3
+            },
+            {
+              "label": "下发成功（调用渠道接口成功）",
+              "content": "60",
+              "span": 3
+            },
+            {
+              "label": "下发失败（调用渠道接口失败）",
+              "content": "70",
+              "span": 3
+            },
+            {
+              "label": "点击（下发的消息被点击）",
+              "content": "0100",
+              "span": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
