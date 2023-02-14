@@ -587,6 +587,15 @@
               "placeholder": "可用占位符{$content}，可输入HTML"
             },
             {
+              "type": "input-text",
+              "label": "附件链接",
+              "name": "url",
+              "visibleOn": "this.sendChannel == 40",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$url}"
+            },
+            {
               "type": "select",
               "label": "企业微信应用",
               "name": "sendAccount",
