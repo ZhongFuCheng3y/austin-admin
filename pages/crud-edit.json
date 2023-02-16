@@ -212,19 +212,14 @@
               "required": true
             },
             {
-              "type": "hidden",
+              "type": "select",
+              "label": "发送账号",
               "name": "sendAccount",
-              "value": "0",
-              "visibleOn": "this.sendChannel == 30"
-            },
-            {
-              "type": "input-text",
-              "label": "短信账号",
-              "disabled": true,
-              "value": "根据【消息类型】按流量分配到对应短信渠道",
+              "source": "${ls:backend_url}/account/queryByChannelType?channelType=30&creator=${ls:openId}",
               "visibleOn": "this.sendChannel == 30",
+              "description": "<font color=\"#990000\">AUTO：根据类型走系统流量配置</font>",
               "clearValueOnHidden": false,
-              "required": false,
+              "required": true,
               "size": "lg"
             },
             {
