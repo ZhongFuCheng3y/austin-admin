@@ -144,7 +144,7 @@
                           "name": "receiver",
                           "label": "接收者",
                           "required": true,
-                          "description": "<font color=\"#990000\">模板存在占位符。</br>请点击【新增】填入文案测试下发！</font>"
+                          "description": "<font color=\"#990000\">如果模板存在占位符，</br>请点击【新增】填入文案测试下发！</font>"
                         },
                         {
                           "type": "service",
