@@ -186,7 +186,7 @@
               "visibleOn": "this.sendChannel ==120",
               "mode": "normal",
               "inline": true,
-              "label": "支付宝小程序消息样例：{\"privateKey\":\"MIIEvQIBADANB......\",\"alipayPublicKey\":\"MIIBIjANBg...\",\"appId\":\"2014********7148\",\"userTemplateId\":\"MDI4YzIxMDE2M2I5YTQzYjUxNWE4MjA4NmU1MTIyYmM=\",\"page\":\"page/component/index\"}"
+              "label": "支付宝小程序消息样例：{\"privateKey\":\"MIIEvQIBADANB......\",\"alipayPublicKey\":\"MIIBIjANBg...\",\"appId\":\"2014********7148\"}"
             }
           ]
         }
