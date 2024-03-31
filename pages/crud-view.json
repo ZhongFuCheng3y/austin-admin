@@ -65,6 +65,10 @@
                 {
                   "label": "飞书userId",
                   "value": "90"
+                },
+                {
+                  "label": "支付宝UserID",
+                  "value": "100"
                 }
               ],
               "required": true
@@ -201,6 +205,10 @@
                 {
                   "label": "飞书机器人",
                   "value": "110"
+                },
+                {
+                  "label": "支付宝小程序(订阅消息)",
+                  "value": "120"
                 }
               ],
               "required": true
@@ -469,6 +477,43 @@
               "type": "service",
               "schemaApi": "${ls:backend_url}/miniProgram/detailTemplate?id=${sendAccount}&wxTemplateId=${templateId}",
               "visibleOn": "this.sendChannel == 60",
+              "description": "<font color=\"#990000\">请点击【新增】填入文案</font>"
+            },
+            {
+              "type": "select",
+              "label": "小程序账号",
+              "name": "sendAccount",
+              "source": "${ls:backend_url}/account/queryByChannelType?channelType=120&creator=${ls:openId}",
+              "visibleOn": "this.sendChannel == 120",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg"
+            },
+            {
+              "type": "select",
+              "label": "选择模板",
+              "name": "templateId",
+              "source": "${ls:backend_url}/miniProgram/template/list?id=${sendAccount}",
+              "visibleOn": "this.sendChannel == 120",
+              "clearValueOnHidden": false,
+              "required": true,
+              "size": "lg",
+              "initFetchOn": "data.sendAccount"
+            },
+            {
+              "type": "input-text",
+              "label": "发送链接",
+              "name": "page",
+              "required": true,
+              "visibleOn": "this.sendChannel == 120 ",
+              "size": "lg",
+              "clearValueOnHidden": false,
+              "placeholder": "可用占位符{$url}"
+            },
+            {
+              "type": "service",
+              "schemaApi": "${ls:backend_url}/miniProgram/detailTemplate?id=${sendAccount}&alipayTemplateId=${templateId}",
+              "visibleOn": "this.sendChannel == 120",
               "description": "<font color=\"#990000\">请点击【新增】填入文案</font>"
             },
             {
